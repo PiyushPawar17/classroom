@@ -1,0 +1,25 @@
+{
+	"name": "classroom",
+	"version": "0.1.0",
+	"main": "src/main.js",
+	"homepage": "./",
+	"private": true,
+	"dependencies": {
+		"concurrently": "^3.5.1",
+		"electron": "^2.0.0",
+		"npm": "^6.0.1",
+		"react": "^16.3.2",
+		"react-dom": "^16.3.2",
+		"react-modal": "^3.4.4",
+		"react-scripts": "1.1.4",
+		"wait-on": "^2.1.0"
+	},
+	"scripts": {
+		"react-start": "react-scripts start",
+		"start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000/ && npm run electron-dev\"",
+		"electron-dev": "set DEV_URL=http://localhost:3000 && electron .",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	}
+}
