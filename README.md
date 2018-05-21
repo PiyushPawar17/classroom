@@ -1,2 +1,2 @@
 # Classroom
-An eleectron app similar to Google Classroom
+An electron app similar to Google Classroom
