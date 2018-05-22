@@ -22,6 +22,8 @@ class Announcements extends React.Component {
 		this.handleOpenModal = this.handleOpenModal.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.addAnnouncement = this.addAnnouncement.bind(this);
+		this.editAnnouncement = this.editAnnouncement.bind(this);
+		this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
 	}
 
 	handleOpenModal() {
@@ -33,10 +35,9 @@ class Announcements extends React.Component {
 	}
 
 	displayAnnouncements() {
-
 		return this.state.announcementList.map((announcement, index) => {
 			return (
-				<Announcement announcement={announcement} key={index} />
+				<Announcement announcement={announcement} key={index} index={index} editAnnouncement={this.editAnnouncement} deleteAnnouncement={this.deleteAnnouncement} />
 			);
 		});
 	}
@@ -45,17 +46,32 @@ class Announcements extends React.Component {
 		event.preventDefault();
 		let newAnnouncement = { title: this.refs.title.value, description: this.refs.description.value };
 		let announcementList = [...this.state.announcementList, newAnnouncement];
+
 		this.setState({ announcementList, showModal: false });
 	}
 
-	render() {
+	editAnnouncement(updatedAnnouncement, index) {
+		let announcementList = [...this.state.announcementList];
+		announcementList[index] = updatedAnnouncement;
 
+		this.setState({ announcementList });
+	}
+
+	deleteAnnouncement(announcementIndex) {
+		let announcementList = this.state.announcementList.filter((announcement, index) => {
+			return announcementIndex !== index;
+		});
+
+		this.setState({ announcementList });
+	}
+
+	render() {
 		return (
 			<div>
 				{ this.displayAnnouncements() }
 				<div>
 					<button onClick={this.handleOpenModal}>New Announcement</button>
-					<ReactModal isOpen={this.state.showModal} contentLabel="Minimal Modal Example" ariaHideApp={false}>
+					<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false}>
 						<button onClick={this.handleCloseModal}>x</button>
 						<form className="new-announcement-form" onSubmit={this.addAnnouncement}>
 							<label>Announcement Title</label>
