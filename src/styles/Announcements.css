@@ -2,22 +2,21 @@
 	background-color: #FCFCFC;
 }
 
-.new-announcement-div {
-	font-family: 'Nunito';
-	text-align: center;
-}
-
 .new-announcement-button {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
 	cursor: pointer;
 	margin: 15px;
-	width: 50%;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	border: none;
 	outline: none;
+	font-size: 25px;
 	background-color: white;
 	color: #0AA100;
-	border: 1px solid #0AA100;
-	border-radius: 2px;
+	border: 1.5px solid #0AA100;
+	border-radius: 50%;
 	transition-duration: 0.7s;
 }
 
@@ -47,11 +46,16 @@
 
 .new-announcement-form > textarea {
 	border: 1px solid grey;
+	border-radius: 5px;
 	font-family: 'Nunito';
 	margin: 5px 15px;
 	padding: 5px;
 	resize: none;
 	outline: none;
+}
+
+.new-announcement-form > textarea:focus {
+	border: 1.2px solid #0060D7;
 }
 
 .new-announcement-title {

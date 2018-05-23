@@ -23,7 +23,7 @@ class Announcements extends React.Component {
 				},
 				{
 					title: 'Class Test',
-					description: 'There will a test of 20 marks in next week\'s lecture. Syllabus for that will be chapter 3.'
+					description: 'There will a test of 20 marks in next week\'s lecture. Syllabus for that will be chapter 6.'
 				},
 				{
 					title: 'No Lectures',
@@ -60,7 +60,7 @@ class Announcements extends React.Component {
 	addAnnouncement(event) {
 		event.preventDefault();
 		let newAnnouncement = { title: this.refs.title.value, description: this.refs.description.value };
-		let announcementList = [...this.state.announcementList, newAnnouncement];
+		let announcementList = [newAnnouncement, ...this.state.announcementList];
 
 		this.setState({ announcementList, showModal: false });
 	}
@@ -86,7 +86,7 @@ class Announcements extends React.Component {
 				<TitleBar title="Announcements" />
 				{ this.displayAnnouncements() }
 				<div className="new-announcement-div">
-					<button onClick={this.handleOpenModal} className="new-announcement-button">New Announcement</button>
+					<button onClick={this.handleOpenModal} className="new-announcement-button">+</button>
 					<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false} className="new-announcement-modal">
 						<form className="new-announcement-form" onSubmit={this.addAnnouncement}>
 							<div>Announcement Title</div>
