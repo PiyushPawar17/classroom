@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 
+import '../styles/Announcement.css';
+
 class Announcement extends React.Component {
 
 	constructor(props) {
@@ -38,18 +40,19 @@ class Announcement extends React.Component {
 	render() {
 		return (
 			<div className="announcement">
-				<h3 className="announcement-title">{this.props.announcement.title}</h3>
-				<div className="announcement-description">{this.props.announcement.description}</div>
-				<button className="edit-announcement-button" onClick={this.handleOpenModal}>Edit Announcement</button>
-				<button className="delete-announcement-button" onClick={this.deleteAnnouncement}>Delete Announcement</button>
-				<ReactModal isOpen={this.state.showModal} contentLabel="Edit Announcement" ariaHideApp={false}>
-					<button onClick={this.handleCloseModal}>x</button>
+				<div className="announcement-title">{this.props.announcement.title}</div>
+				<pre className="announcement-description">{this.props.announcement.description}</pre>
+				<button className="edit-announcement-button" onClick={this.handleOpenModal}>&#9998; Edit Announcement</button>
+				<button className="delete-announcement-button" onClick={this.deleteAnnouncement}>Delete Announcement &#10007;</button>
+				<ReactModal isOpen={this.state.showModal} contentLabel="Edit Announcement" ariaHideApp={false} className="edit-announcement-modal">
 					<form className="edit-announcement-form" onSubmit={this.editAnnouncement}>
-						<label>Announcement Title</label>
-						<input type="text" className="edit-announcement-title" ref="title" defaultValue={this.props.announcement.title} />
-						<label>Announcement Description</label>
-						<input type="text" className="edit-announcement-description" ref="description" defaultValue={this.props.announcement.description} />
-						<input type="submit" value="Update Announcement" />
+						<div>Announcement Title</div>
+						<textarea type="text" className="edit-announcement-title" ref="title" defaultValue={this.props.announcement.title}></textarea>
+						<div>Announcement Description</div>
+						<textarea type="text" className="edit-announcement-description" ref="description" defaultValue={this.props.announcement.description}></textarea>
+						<br />
+						<input type="submit" value="Update Announcement" className="update-announcement-button" />
+						<button onClick={this.handleCloseModal} className="close-modal-button">Cancel</button>
 					</form>
 				</ReactModal>
 			</div>

@@ -2,6 +2,9 @@ import React from 'react';
 import ReactModal from 'react-modal';
 
 import Announcement from './Announcement';
+import TitleBar from './TitleBar';
+
+import '../styles/Announcements.css';
 
 class Announcements extends React.Component {
 
@@ -10,10 +13,22 @@ class Announcements extends React.Component {
 
 		this.state = {
 			announcementList: [
-				{ title: '1', description: 'One' },
-				{ title: '2', description: 'Two' },
-				{ title: '3', description: 'Three' },
-				{ title: '4', description: 'Four' }
+				{
+					title: 'Class Postponed',
+					description: 'Today\'s class will start at 11:00 A.M.'
+				},
+				{
+					title: 'In-Semester 2 Exam Syllabus',
+					description: 'Syllabus for In-Semester 2 will be chapters 3 to 5.'
+				},
+				{
+					title: 'Class Test',
+					description: 'There will a test of 20 marks in next week\'s lecture. Syllabus for that will be chapter 3.'
+				},
+				{
+					title: 'No Lectures',
+					description: 'There will be no lectues this week. Complete last week\'s lab work in this week\'s lab.'
+				}
 			],
 			showModal: false
 		}
@@ -67,18 +82,20 @@ class Announcements extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="announcements">
+				<TitleBar title="Announcements" />
 				{ this.displayAnnouncements() }
-				<div>
-					<button onClick={this.handleOpenModal}>New Announcement</button>
-					<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false}>
-						<button onClick={this.handleCloseModal}>x</button>
+				<div className="new-announcement-div">
+					<button onClick={this.handleOpenModal} className="new-announcement-button">New Announcement</button>
+					<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false} className="new-announcement-modal">
 						<form className="new-announcement-form" onSubmit={this.addAnnouncement}>
-							<label>Announcement Title</label>
-							<input type="text" className="new-announcement-title" ref="title" />
-							<label>Announcement Description</label>
-							<input type="text" className="new-announcement-description" ref="description" />
-							<input type="submit" value="Add Announcement" />
+							<div>Announcement Title</div>
+							<textarea type="text" className="new-announcement-title" ref="title"></textarea>
+							<div>Announcement Description</div>
+							<textarea type="text" className="new-announcement-description" ref="description"></textarea>
+							<br />
+							<input type="submit" value="Add Announcement" className="add-announcement-button" />
+							<button onClick={this.handleCloseModal} className="close-modal-button">Cancel</button>
 						</form>
 					</ReactModal>
 				</div>
