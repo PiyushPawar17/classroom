@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Announcements from './Announcements';
 
 import '../styles/App.css';

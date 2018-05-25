@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import database from '../firebase/firebase';
 
 import Announcement from './Announcement';
 import TitleBar from './TitleBar';
@@ -12,24 +13,7 @@ class Announcements extends React.Component {
 		super();
 
 		this.state = {
-			announcementList: [
-				{
-					title: 'Class Postponed',
-					description: 'Today\'s class will start at 11:00 A.M.'
-				},
-				{
-					title: 'In-Semester 2 Exam Syllabus',
-					description: 'Syllabus for In-Semester 2 will be chapters 3 to 5.'
-				},
-				{
-					title: 'Class Test',
-					description: 'There will a test of 20 marks in next week\'s lecture. Syllabus for that will be chapter 6.'
-				},
-				{
-					title: 'No Lectures',
-					description: 'There will be no lectues this week. Complete last week\'s lab work in this week\'s lab.'
-				}
-			],
+			announcements: [],
 			showModal: false
 		}
 
@@ -41,6 +25,22 @@ class Announcements extends React.Component {
 		this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
 	}
 
+	componentDidMount() {
+		let announcements = [];
+		console.log(1, announcements);
+		database.ref('announcements').on('value', (snapshot) => {
+			snapshot.forEach((childSnapshot) => {
+				announcements.push({
+					_id: childSnapshot.key,
+					...childSnapshot.val()
+				});
+			});
+			announcements.reverse();
+			this.setState({ announcements }, () => console.log(2, announcements));
+			announcements = [];
+		});
+	}
+
 	handleOpenModal() {
 		this.setState({ showModal: true });
 	}
@@ -50,7 +50,7 @@ class Announcements extends React.Component {
 	}
 
 	displayAnnouncements() {
-		return this.state.announcementList.map((announcement, index) => {
+		return this.state.announcements.map((announcement, index) => {
 			return (
 				<Announcement announcement={announcement} key={index} index={index} editAnnouncement={this.editAnnouncement} deleteAnnouncement={this.deleteAnnouncement} />
 			);
@@ -59,25 +59,23 @@ class Announcements extends React.Component {
 
 	addAnnouncement(event) {
 		event.preventDefault();
-		let newAnnouncement = { title: this.refs.title.value, description: this.refs.description.value };
-		let announcementList = [newAnnouncement, ...this.state.announcementList];
 
-		this.setState({ announcementList, showModal: false });
+		database.ref('announcements').push({
+			title: this.refs.title.value,
+			description: this.refs.description.value
+		});
+
+		this.setState({ showModal: false });
 	}
 
 	editAnnouncement(updatedAnnouncement, index) {
-		let announcementList = [...this.state.announcementList];
-		announcementList[index] = updatedAnnouncement;
-
-		this.setState({ announcementList });
+		let key = this.state.announcements[index]._id;
+		database.ref('announcements/' + key).set(updatedAnnouncement);
 	}
 
 	deleteAnnouncement(announcementIndex) {
-		let announcementList = this.state.announcementList.filter((announcement, index) => {
-			return announcementIndex !== index;
-		});
-
-		this.setState({ announcementList });
+		let key = this.state.announcements[announcementIndex]._id;
+		database.ref('announcements/' + key).remove();
 	}
 
 	render() {
