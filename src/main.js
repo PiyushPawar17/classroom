@@ -8,7 +8,8 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1430,
 		height: 800,
-		resizable: false
+		resizable: false,
+		title: 'Classroom'
 	});
 	const startUrl = process.env.DEV_URL ||
 		url.format({

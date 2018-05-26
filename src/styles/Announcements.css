@@ -2,6 +2,37 @@
 	background-color: #FCFCFC;
 }
 
+.back-to-main-page-button {
+	float: right;
+	margin: 15px;
+	font-family: 'Nunito';
+	outline: none;
+	border: none;
+	cursor: pointer;
+	width: 60px;
+	height: 30px;
+	background-color: transparent;
+	border: 1px solid green;
+	border-radius: 5px;
+	transition-duration: 0.7s;
+}
+
+.back-to-main-page-button:hover {
+	background-color: green;
+}
+
+.back-to-main-page-button a {
+	text-decoration: none;
+	color: green;
+	height: 30px;
+	width: 75px;
+	transition-duration: 0.7s;
+}
+
+.back-to-main-page-button a:hover {
+	color: white;
+}
+
 .new-announcement-button {
 	position: fixed;
 	right: 10px;

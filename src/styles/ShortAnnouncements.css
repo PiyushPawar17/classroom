@@ -1,0 +1,45 @@
+.short-announcements {
+	width: 23%;
+	font-family: 'Nunito';
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+	margin-left: 2px;
+}
+
+.short-announcements-title {
+	height: 35px;
+	padding: 5px;
+	font-size: 20px;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+
+.short-announcement {
+	height: 30px;
+	margin: 4px;
+	padding: 5px;
+	padding-left: 15px;
+	border-left: 5px solid blue;
+	word-wrap: break-word;
+	background-color: #F0F0F0;
+}
+
+.more-announcement-button {
+	height: 30px;
+	width: 100%;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.more-announcement-button a {
+	color: black;
+	text-decoration: none;
+	transition-duration: 0.4s;
+}
+
+.more-announcement-button a:hover {
+	color: blue;
+	text-decoration: underline;
+}

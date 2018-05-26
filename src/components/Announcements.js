@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import { Link } from 'react-router-dom';
 import database from '../firebase/firebase';
 
 import Announcement from './Announcement';
@@ -27,7 +28,7 @@ class Announcements extends React.Component {
 
 	componentDidMount() {
 		let announcements = [];
-		console.log(1, announcements);
+
 		database.ref('announcements').on('value', (snapshot) => {
 			snapshot.forEach((childSnapshot) => {
 				announcements.push({
@@ -36,7 +37,7 @@ class Announcements extends React.Component {
 				});
 			});
 			announcements.reverse();
-			this.setState({ announcements }, () => console.log(2, announcements));
+			this.setState({ announcements });
 			announcements = [];
 		});
 	}
@@ -82,6 +83,7 @@ class Announcements extends React.Component {
 		return (
 			<div className="announcements">
 				<TitleBar title="Announcements" />
+				<button className="back-to-main-page-button"><Link to="/">&#8678; Back</Link></button>
 				{ this.displayAnnouncements() }
 				<div className="new-announcement-div">
 					<button onClick={this.handleOpenModal} className="new-announcement-button">+</button>
