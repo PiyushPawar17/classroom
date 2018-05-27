@@ -31,7 +31,7 @@ class ShortAnnouncements extends React.Component {
 			if (announcements.length > 4)
 				announcements = announcements.slice(0, 4);
 
-			this.setState({ announcements }, () => console.log(this.state.announcements));
+			this.setState({ announcements });
 			announcements = [];
 		});
 	}

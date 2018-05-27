@@ -1,12 +1,12 @@
 import * as firebase from 'firebase';
 
 const config = {
-	apiKey: "AIzaSyCG9Ls6Pyqdbg5k8aV3wyy8pEPO0qxoHMU",
-	authDomain: "classroom-db620.firebaseapp.com",
-	databaseURL: "https://classroom-db620.firebaseio.com",
-	projectId: "classroom-db620",
-	storageBucket: "classroom-db620.appspot.com",
-	messagingSenderId: "65196655317"
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+	databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);

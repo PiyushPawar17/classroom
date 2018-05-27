@@ -8,6 +8,7 @@
 
 .short-announcements-title {
 	height: 35px;
+	line-height: 35px;
 	padding: 5px;
 	font-size: 20px;
 	border-bottom: 1px solid black;
@@ -22,6 +23,7 @@
 	border-left: 5px solid blue;
 	word-wrap: break-word;
 	background-color: #F0F0F0;
+	line-height: 30px;
 }
 
 .more-announcement-button {
@@ -36,10 +38,8 @@
 .more-announcement-button a {
 	color: black;
 	text-decoration: none;
-	transition-duration: 0.4s;
 }
 
 .more-announcement-button a:hover {
-	color: blue;
 	text-decoration: underline;
 }
