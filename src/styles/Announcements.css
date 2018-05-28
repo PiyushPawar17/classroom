@@ -101,18 +101,21 @@
 	font-size: 15px;
 }
 
-.add-announcement-button {
+.add-announcement-button, .close-modal-button {
 	cursor: pointer;
 	margin: 15px;
 	width: 25%;
 	height: 30px;
 	border: none;
 	outline: none;
+	border-radius: 2px;
 	background-color: white;
+	transition-duration: 0.7s;
+}
+
+.add-announcement-button {
 	color: #0AA100;
 	border: 1px solid #0AA100;
-	border-radius: 2px;
-	transition-duration: 0.7s;
 }
 
 .add-announcement-button:hover {
@@ -121,18 +124,8 @@
 }
 
 .close-modal-button {
-	cursor: pointer;
-	margin: 15px;
-	border: none;
-	outline: none;
-	font-family: 'Nunito';
-	background-color: white;
 	color: #DC0000;
 	border: 1px solid #DC0000;
-	border-radius: 2px;
-	height: 30px;
-	width: 25%;
-	transition-duration: 0.7s;
 }
 
 .close-modal-button:hover {
