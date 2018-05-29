@@ -1,0 +1,69 @@
+.sign-up {
+	width: 500px;
+	height: 400px;
+	border: 1px solid black;
+	padding: 15px;
+	margin: 100px auto;
+	font-family: 'Nunito';
+}
+
+.sign-up-title {
+	text-align: center;
+	font-size: 35px;
+	border-bottom: 1px solid black;
+}
+
+.sign-up-form {
+	margin: 15px;
+	padding: 5px;
+}
+
+.sign-up-form > div {
+	margin-bottom: 15px;
+}
+
+.sign-up-email, .sign-up-password {
+	width: 310px;
+	height: 30px;
+	margin-bottom: 15px;
+	outline: none;
+	font-family: 'Nunito';
+	font-size: 15px;
+	border: 1px solid grey;
+	padding-left: 2px;
+	border-radius: 3px;
+}
+
+.sign-up-submit, .sign-up-cancel-button {
+	width: 150px;
+	height: 35px;
+	margin-right: 10px;
+	margin-top: 10px;
+	outline: none;
+	background-color: transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 15px;
+	font-family: 'Nunito';
+	transition-duration: 0.7s;
+}
+
+.sign-up-submit {
+	border: 1.5px solid #0AA100;
+	color: #0AA100;
+}
+
+.sign-up-submit:hover {
+	background-color: #0AA100;
+	color: white;
+}
+
+.sign-up-cancel-button {
+	border: 1.5px solid #DC0000;
+	color: #DC0000;
+}
+
+.sign-up-cancel-button:hover {
+	background-color: #DC0000;
+	color: white;
+}

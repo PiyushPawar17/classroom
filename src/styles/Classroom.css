@@ -1,0 +1,46 @@
+#classroom {
+	height: 700px;
+	font-family: 'Nunito';
+	text-align: center;
+}
+
+.classroom-title {
+	text-align: center;
+	height: 500px;
+	line-height: 500px;
+	font-size: 100px;
+}
+
+.to-sign-in, .to-sign-up {
+	font-family: 'Nunito';
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	outline: none;
+	background-color: transparent;
+	margin-right: 15px;
+	margin-top: 15px;
+	border-radius: 7px;
+	cursor: pointer;
+	transition-duration: 0.7s;
+}
+
+.to-sign-in {
+	border: 2px solid #0060D7;
+	color: #0060D7;
+}
+
+.to-sign-in:hover {
+	background-color: #0060D7;
+	color: white;
+}
+
+.to-sign-up {
+	border: 2px solid #33CC00;
+	color: #33CC00;
+}
+
+.to-sign-up:hover {
+	background-color: #33CC00;
+	color: white;
+}

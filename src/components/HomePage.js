@@ -3,13 +3,13 @@ import React from 'react';
 import TitleBar from './TitleBar';
 import ShortAnnouncements from './ShortAnnouncements';
 
-import '../styles/MainPage.css';
+import '../styles/HomePage.css';
 
-class MainPage extends React.Component {
+class HomePage extends React.Component {
 
 	render() {
 		return (
-			<div className="main-page">
+			<div className="home-page">
 				<TitleBar title="Main Page" />
 				<ShortAnnouncements />
 			</div>
@@ -17,4 +17,4 @@ class MainPage extends React.Component {
 	}
 }
 
-export default MainPage;
+export default HomePage;

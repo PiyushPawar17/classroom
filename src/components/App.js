@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import MainPage from './MainPage';
+import Classroom from './Classroom';
+import HomePage from './HomePage';
 import Announcements from './Announcements';
 import SignIn from './SignIn';
+import SignUp from './SignUp';
+import Details from './Details';
 
 import '../styles/App.css';
 
@@ -14,7 +17,7 @@ class App extends React.Component {
 			<div>
 				<BrowserRouter>
 					<Switch>
-						<Route exact path='/' component={SignIn} />
+						<Route exact path='/' component={Details} />
 						<Route path='/announcements' component={Announcements} />
 					</Switch>
 				</BrowserRouter>

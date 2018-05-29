@@ -1,0 +1,73 @@
+.details {
+	width: 500px;
+	height: 400px;
+	border: 1px solid black;
+	padding: 15px;
+	margin: 100px auto;
+	font-family: 'Nunito';
+}
+
+
+.details-title {
+	text-align: center;
+	font-size: 35px;
+	border-bottom: 1px solid black;
+}
+
+.details-form {
+	margin: 15px;
+	padding: 5px;
+}
+
+.details-form > div {
+	margin-bottom: 15px;
+}
+
+.details-name, .details-id {
+	width: 310px;
+	height: 30px;
+	margin-bottom: 15px;
+	outline: none;
+	font-family: 'Nunito';
+	font-size: 15px;
+	border: 1px solid grey;
+	padding-left: 2px;
+	border-radius: 3px;
+}
+
+.details-branch {
+	outline: none;
+}
+
+.details-submit, .details-cancel-button {
+	margin-right: 10px;
+	margin-top: 10px;
+	height: 35px;
+	width: 150px;
+	outline: none;
+	background-color: transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: 'Nunito';
+	transition-duration: 0.7s;
+}
+
+.details-submit {
+	border: 1.5px solid #0AA100;
+	color: #0AA100;
+}
+
+.details-submit:hover {
+	background-color: #0AA100;
+	color: white;
+}
+
+.details-cancel-button {
+	border: 1.5px solid #DC0000;
+	color: #DC0000;
+}
+
+.details-cancel-button:hover {
+	background-color: #DC0000;
+	color: white;
+}
