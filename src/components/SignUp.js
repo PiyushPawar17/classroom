@@ -1,4 +1,5 @@
 import React from 'react';
+import { history } from '../routes/AppRouter';
 
 import '../styles/SignUp.css';
 
@@ -16,8 +17,8 @@ class SignUp extends React.Component {
 					<div>Confirm Password</div>
 					<input type="password" className="sign-up-password" />
 					<br />
-					<input type="submit" value="Sign Up" className="sign-up-submit" />
-					<input type="button" value="Cancel" className="sign-up-cancel-button" />
+					<input type="submit" value="Sign Up" className="sign-up-submit" onClick={() => history.push('/details')} />
+					<input type="button" value="Cancel" className="sign-up-cancel-button" onClick={() => history.push('/')} />
 				</form>
 			</div>
 		);
