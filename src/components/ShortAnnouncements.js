@@ -47,7 +47,7 @@ class ShortAnnouncements extends React.Component {
 	render() {
 		return (
 			<div className="short-announcements">
-				<div className="short-announcements-title">Recent Announcements</div>
+				<div className="short-announcements-title">Announcements</div>
 				{ this.displayShortAnnouncements() }
 				<button className="more-announcement-button"><Link to="/announcements">more...</Link></button>
 			</div>

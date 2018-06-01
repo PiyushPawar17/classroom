@@ -1,0 +1,29 @@
+.header {
+	text-align: center;
+	font-family: 'Nunito';
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	color: white;
+	background-color: crimson;
+}
+
+.back-button, .home-button, .logout-button {
+	height: 40px;
+	width: 85px;
+	margin: 10px 5px;
+	font-size: 15px;
+	font-family: 'Nunito';
+}
+
+.back-button, .home-button {
+	float: left;
+}
+
+.logout-button {
+	float: right;
+}
+
+.header > .subject-name {
+	font-size: 25px;
+}

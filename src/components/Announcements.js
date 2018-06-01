@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import { Link } from 'react-router-dom';
 import database from '../firebase/firebase';
 
 import Announcement from './Announcement';
-import TitleBar from './TitleBar';
+import Header from './Header';
 
 import '../styles/Announcements.css';
 
@@ -82,8 +81,7 @@ class Announcements extends React.Component {
 	render() {
 		return (
 			<div className="announcements">
-				<TitleBar title="Announcements" />
-				<button className="back-to-main-page-button"><Link to="/">&#8678; Back</Link></button>
+				<Header subjectCode="CS204" subject="Computer Networks" />
 				{ this.displayAnnouncements() }
 				<div className="new-announcement-div">
 					<button onClick={this.handleOpenModal} className="new-announcement-button">+</button>
