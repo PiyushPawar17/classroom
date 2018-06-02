@@ -1,4 +1,4 @@
-.subject {
+.add-subject-div {
 	border: 1px solid black;
 	width: 300px;
 	height: 200px;
@@ -10,17 +10,16 @@
 	box-shadow: 1px 1px 1px black;
 }
 
-.subject-info {
+.add-subject-button {
+	text-align: center;
+	font-size: 35px;
+	line-height: 150px;
 	height: 75%;
+	opacity: 0.8;
 	border-bottom: 1px solid black;
 }
 
-.subject-code, .subject-name {
-	font-size: 20px;
-	padding: 5px;
-	word-wrap: break-word;
-}
-
-.instructor-name {
+.add-subject-label {
+	text-align: center;
 	padding: 15px 5px;
 }

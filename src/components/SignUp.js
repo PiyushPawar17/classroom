@@ -1,5 +1,6 @@
 import React from 'react';
-import { firebase } from '../firebase/firebase';
+import { Notification } from 'react-notification';
+import database, { firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
 import '../styles/SignUp.css';
@@ -9,24 +10,56 @@ class SignUp extends React.Component {
 	constructor() {
 		super();
 
+		this.state = {
+			passwordMatchSnackbar: false,
+			errorSnackbar: false,
+			errorMessage: ''
+		};
+
 		this.signUp = this.signUp.bind(this);
 	}
 
 	signUp(event) {
 		event.preventDefault();
+
+		if (this.refs.password.value !== this.refs.confirmPassword.value) {
+			this.setState({ passwordMatchSnackbar: true }, () => {
+				setTimeout(() => {
+					this.setState({ passwordMatchSnackbar: false });
+				}, 2500);
+			});
+			return;
+		}
+
 		firebase.auth().createUserWithEmailAndPassword(this.refs.email.value, this.refs.password.value).then((user) => {
-			/*console.log(user);
-			firebase.auth().currentUser.sendEmailVerification().then(() => {
+			database.ref('users').push({
+				userEmail: user.user.email,
+				userUID: user.user.uid
+			});
+			/*firebase.auth().currentUser.sendEmailVerification().then(() => {
 				console.log('Email Sent');
 			});*/
+			history.push('/details');
 		}).catch((error) => {
-			console.log(error.code, error.message);
+			this.setState({
+				errorSnackbar: true,
+				errorMessage: error.message
+			}, () => {
+				setTimeout(() => {
+					this.setState({
+						errorSnackbar: false,
+						errorMessage: ''
+					});
+				}, 3000);
+			});
 		});
 	}
 
 	render() {
 		return (
 			<div className="sign-up" onSubmit={this.signUp}>
+				<Notification isActive={this.state.passwordMatchSnackbar} message="Password does not match" title="Error" />
+				<Notification isActive={this.state.errorSnackbar} message={this.state.errorMessage} title="Error" />
 				<div className="sign-up-title">Sign Up</div>
 				<form className="sign-up-form">
 					<div>Email</div>

@@ -67,3 +67,11 @@
 	background-color: #DC0000;
 	color: white;
 }
+
+.notification-bar-wrapper {
+	color: red;
+}
+
+.notification-bar-message {
+	color: white;
+}

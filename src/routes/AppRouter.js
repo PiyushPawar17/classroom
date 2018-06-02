@@ -10,13 +10,14 @@ import SignUp from '../components/SignUp';
 import Details from '../components/Details';
 import Subject from '../components/Subject';
 import Subjects from '../components/Subjects';
+import HomePage from '../components/HomePage';
 
 export const history = createHistory();
 
 const AppRouter = () => (
 	<Router history={history}>
 		<Switch>
-			<Route exact path='/' component={Subjects} />
+			<Route exact path='/' component={Classroom} />
 			<Route path='/signin' component={SignIn} />
 			<Route path='/signup' component={SignUp} />
 			<Route path='/details' component={Details} />
