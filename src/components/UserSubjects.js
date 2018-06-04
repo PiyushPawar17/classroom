@@ -1,7 +1,7 @@
 import React from 'react';
 import Subject from './Subject';
 
-class Subjects extends React.Component {
+class UserSubjects extends React.Component {
 
 	constructor() {
 		super();
@@ -17,13 +17,19 @@ class Subjects extends React.Component {
 			]
 		};
 
-		this.displaySubjects = this.displaySubjects.bind(this);
+		this.displayUserSubjects = this.displayUserSubjects.bind(this);
 	}
 
-	displaySubjects() {
+	displayUserSubjects() {
 		return this.state.subjects.map((subject, index) => {
 			return (
-				<Subject subjectCode={subject.subjectCode} subjectName={subject.subjectName} instructor={subject.instructor} key={index} />
+				<Subject
+					subjectCode={subject.subjectCode}
+					subjectName={subject.subjectName}
+					instructor={subject.instructor}
+					key={index}
+					index={index}
+				/>
 			)
 		});
 	}
@@ -31,10 +37,10 @@ class Subjects extends React.Component {
 	render() {
 		return (
 			<div className="subjects">
-				{ this.displaySubjects() }
+				{ this.displayUserSubjects() }
 			</div>
 		);
 	}
 }
 
-export default Subjects;
+export default UserSubjects;

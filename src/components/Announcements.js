@@ -49,14 +49,6 @@ class Announcements extends React.Component {
 		this.setState({ showModal: false });
 	}
 
-	displayAnnouncements() {
-		return this.state.announcements.map((announcement, index) => {
-			return (
-				<Announcement announcement={announcement} key={index} index={index} editAnnouncement={this.editAnnouncement} deleteAnnouncement={this.deleteAnnouncement} />
-			);
-		});
-	}
-
 	addAnnouncement(event) {
 		event.preventDefault();
 
@@ -76,6 +68,20 @@ class Announcements extends React.Component {
 	deleteAnnouncement(announcementIndex) {
 		let key = this.state.announcements[announcementIndex]._id;
 		database.ref('announcements/' + key).remove();
+	}
+
+	displayAnnouncements() {
+		return this.state.announcements.map((announcement, index) => {
+			return (
+				<Announcement
+					announcement={announcement}
+					key={index}
+					index={index}
+					editAnnouncement={this.editAnnouncement}
+					deleteAnnouncement={this.deleteAnnouncement}
+				/>
+			);
+		});
 	}
 
 	render() {
