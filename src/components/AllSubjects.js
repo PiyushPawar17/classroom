@@ -34,13 +34,11 @@ class AllSubjects extends React.Component {
 
 	addSubjectToList(subjectIndex) {
 		let currentIndex = 0;
-		console.log(this.props.dbUserKey);
 		database.ref('subjects').once('value').then((subjects) => {
 			subjects.forEach((subject) => {
 				if (subjectIndex === currentIndex) {
 					database.ref('users/' + this.props.dbUserKey + '/userSubjects').push({
-						subjectName: subject.val().subjectName,
-						subjectCode: subject.val().subjectCode
+						dbSubjectKey: subject.key
 					}).then(() => history.push('/homepage'));
 				}
 				currentIndex++;

@@ -22,10 +22,10 @@ class Subject extends React.Component {
 		return (
 			<div className="subject" onClick={this.subjectClickHandler}>
 				<div className="subject-info">
-					<div className="subject-code">{this.props.subjectCode}</div>
-					<div className="subject-name">{this.props.subjectName}</div>
+					<div className="subject-code">{this.props.subject.subjectCode}</div>
+					<div className="subject-name">{this.props.subject.subjectName}</div>
 				</div>
-				<div className="instructor-name">Instructor: {this.props.instructor}</div>
+				<div className="instructor-name">Instructor: {this.props.subject.instructorName}</div>
 			</div>
 		);
 	}

@@ -1,4 +1,6 @@
 import React from 'react';
+import database from '../firebase/firebase';
+
 import Subject from './Subject';
 
 class UserSubjects extends React.Component {
@@ -7,30 +9,39 @@ class UserSubjects extends React.Component {
 		super();
 
 		this.state = {
-			subjects: [
-				{ subjectCode: 'CS204', subjectName: 'Computer Networks', instructor: 'NK' },
-				{ subjectCode: 'CS204', subjectName: 'Computer Networks', instructor: 'NK' },
-				{ subjectCode: 'CS204', subjectName: 'Computer Networks', instructor: 'NK' },
-				{ subjectCode: 'CS204', subjectName: 'Computer Networks', instructor: 'NK' },
-				{ subjectCode: 'CS204', subjectName: 'Computer Networks', instructor: 'NK' },
-				{ subjectCode: 'CS204', subjectName: 'Computer Networks', instructor: 'NK' }
-			]
+			userSubjects: []
 		};
 
 		this.displayUserSubjects = this.displayUserSubjects.bind(this);
 	}
 
+	componentDidMount() {
+		let userSubjectKeys = [];
+		let userSubjects = [];
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
+			subjects.forEach((subject) => {
+				userSubjectKeys.push(subject.val().dbSubjectKey);
+			});
+			userSubjectKeys.forEach((key) => {
+				database.ref('subjects/' + key).once('value').then((subject) => {
+					userSubjects.push({
+						subjectName: subject.val().subjectName,
+						subjectCode: subject.val().subjectCode,
+						instructorName: subject.val().instructorName
+					});
+					this.setState({ userSubjects }, () => console.log(this.state.userSubjects));
+				});
+			});
+		});
+		userSubjectKeys = [];
+		userSubjects = [];
+	}
+
 	displayUserSubjects() {
-		return this.state.subjects.map((subject, index) => {
+		return this.state.userSubjects.map((subject, index) => {
 			return (
-				<Subject
-					subjectCode={subject.subjectCode}
-					subjectName={subject.subjectName}
-					instructor={subject.instructor}
-					key={index}
-					index={index}
-				/>
-			)
+				<Subject subject={subject} key={index} index={index} />
+			);
 		});
 	}
 

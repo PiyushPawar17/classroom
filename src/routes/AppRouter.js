@@ -42,8 +42,8 @@ const AppRouter = () => (
 			<Route path='/details' component={Details} />
 			<Route path='/homepage' render={(props) => <HomePage {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/allsubjects' render={(props) => <AllSubjects {...props} dbUserKey={dbUserKey} />} />
-			<Route path='/subjecthomepage' component={SubjectHomePage} />
-			<Route path='/announcements' component={Announcements} />
+			<Route path='/subjecthomepage' render={(props) => <SubjectHomePage {...props} dbUserKey={dbUserKey} />} />
+			<Route path='/announcements' render={(props) => <Announcements {...props} dbUserKey={dbUserKey} />} />
 		</Switch>
 	</Router>
 );

@@ -54,12 +54,11 @@ class HomePage extends React.Component {
 				subjectName: subjectName,
 				subjectCode: subjectCode,
 				instructorName: user.val().userName
+			}).then((subject) => {
+				database.ref('users/' + dbUserKey + '/userSubjects').push({
+					dbSubjectKey: subject.key
+				});
 			});
-		});
-
-		database.ref('users/' + dbUserKey + '/userSubjects').push({
-			subjectName: subjectName,
-			subjectCode: subjectCode
 		});
 		this.handleCloseModal();
 	}
@@ -72,7 +71,7 @@ class HomePage extends React.Component {
 		return (
 			<div className="home-page">
 				<Header />
-				<UserSubjects />
+				<UserSubjects dbUserKey={this.props.dbUserKey} />
 				<div className="add-subject-div" onClick={this.addSubjectHandler}>
 					<div className="add-subject-div-button">+</div>
 					<div className="add-subject-label">Add Subject</div>
