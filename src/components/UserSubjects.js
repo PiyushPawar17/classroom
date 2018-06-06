@@ -29,7 +29,7 @@ class UserSubjects extends React.Component {
 						subjectCode: subject.val().subjectCode,
 						instructorName: subject.val().instructorName
 					});
-					this.setState({ userSubjects }, () => console.log(this.state.userSubjects));
+					this.setState({ userSubjects });
 				});
 			});
 		});

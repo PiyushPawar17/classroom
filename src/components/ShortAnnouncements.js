@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import database from '../firebase/firebase';
+import { history } from '../routes/AppRouter';
 
 import '../styles/ShortAnnouncements.css';
 
@@ -14,6 +15,7 @@ class ShortAnnouncements extends React.Component {
 		};
 
 		this.displayShortAnnouncements = this.displayShortAnnouncements.bind(this);
+		this.linkToAnnouncements = this.linkToAnnouncements.bind(this);
 	}
 
 	componentDidMount() {
@@ -36,6 +38,10 @@ class ShortAnnouncements extends React.Component {
 		});
 	}
 
+	linkToAnnouncements() {
+		history.push('/announcements?subIndex=' + this.props.subIndex);
+	}
+
 	displayShortAnnouncements() {
 		return this.state.announcements.map((announcement, index) => {
 			return (
@@ -49,7 +55,7 @@ class ShortAnnouncements extends React.Component {
 			<div className="short-announcements">
 				<div className="short-announcements-title">Announcements</div>
 				{ this.displayShortAnnouncements() }
-				<button className="more-announcement-button"><Link to="/announcements">more...</Link></button>
+				<button className="more-announcement-button" onClick={this.linkToAnnouncements}>more...</button>
 			</div>
 		);
 	}

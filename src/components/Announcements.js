@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import database from '../firebase/firebase';
+import { history } from '../routes/AppRouter';
 
 import Announcement from './Announcement';
 import Header from './Header';
@@ -13,7 +14,7 @@ class Announcements extends React.Component {
 		super();
 
 		this.state = {
-			announcements: [],
+			allAnnouncements: [],
 			showModal: false
 		}
 
@@ -26,18 +27,26 @@ class Announcements extends React.Component {
 	}
 
 	componentDidMount() {
-		let announcements = [];
-
-		database.ref('announcements').on('value', (snapshot) => {
-			snapshot.forEach((childSnapshot) => {
-				announcements.push({
-					_id: childSnapshot.key,
-					...childSnapshot.val()
-				});
+		let allAnnouncements = [];
+		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').on('value', (subjects) => {
+			let currentIndex = 0;
+			subjects.forEach((subject) => {
+				if (currentIndex == subIndex) {
+					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements').on('value', (announcements) => {
+						announcements.forEach((announcement) => {
+							allAnnouncements.push({
+								announcementID: announcement.key,
+								...announcement.val()
+							});
+						});
+						this.setState({ allAnnouncements });
+						allAnnouncements = [];
+					});
+				}
+				currentIndex++;
 			});
-			announcements.reverse();
-			this.setState({ announcements });
-			announcements = [];
+			currentIndex = 0;
 		});
 	}
 
@@ -51,27 +60,57 @@ class Announcements extends React.Component {
 
 	addAnnouncement(event) {
 		event.preventDefault();
+		const title = this.refs.title.value;
+		const description = this.refs.description.value;
 
-		database.ref('announcements').push({
-			title: this.refs.title.value,
-			description: this.refs.description.value
+		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
+			let currentIndex = 0;
+			subjects.forEach((subject) => {
+				if (currentIndex == subIndex) {
+					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements').push({
+						title: title,
+						description: description
+					});
+				}
+				currentIndex++;
+			});
+
 		});
-
 		this.setState({ showModal: false });
 	}
 
 	editAnnouncement(updatedAnnouncement, index) {
-		let key = this.state.announcements[index]._id;
-		database.ref('announcements/' + key).set(updatedAnnouncement);
+		let announcementID = this.state.allAnnouncements[index].announcementID;
+		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
+			let currentIndex = 0;
+			subjects.forEach((subject) => {
+				if (currentIndex == subIndex) {
+					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements/' + announcementID).set(updatedAnnouncement);
+				}
+				currentIndex++;
+			});
+		});
 	}
 
 	deleteAnnouncement(announcementIndex) {
-		let key = this.state.announcements[announcementIndex]._id;
-		database.ref('announcements/' + key).remove();
+		let announcementID = this.state.allAnnouncements[announcementIndex].announcementID;
+		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
+			let currentIndex = 0;
+			subjects.forEach((subject) => {
+				if (currentIndex == subIndex) {
+					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements/' + announcementID).remove();
+				}
+				currentIndex++;
+			});
+		});
 	}
 
 	displayAnnouncements() {
-		return this.state.announcements.map((announcement, index) => {
+		return this.state.allAnnouncements.map((announcement, index) => {
 			return (
 				<Announcement
 					announcement={announcement}

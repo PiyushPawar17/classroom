@@ -15,7 +15,7 @@ class Subject extends React.Component {
 		if (history.location.pathname === '/allsubjects')
 			this.props.addSubjectToList(this.props.index);
 		else
-			this.props.goToSubjectHomePage(this.props.index);
+			history.push('/subjecthomepage?subIndex=' + this.props.index);
 	}
 
 	render() {
