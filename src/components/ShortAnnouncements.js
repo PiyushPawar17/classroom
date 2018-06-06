@@ -11,7 +11,7 @@ class ShortAnnouncements extends React.Component {
 		super();
 
 		this.state = {
-			announcements: []
+			allAnnouncements: []
 		};
 
 		this.displayShortAnnouncements = this.displayShortAnnouncements.bind(this);
@@ -19,22 +19,24 @@ class ShortAnnouncements extends React.Component {
 	}
 
 	componentDidMount() {
-		let announcements = [];
+		let allAnnouncements = [];
 
-		database.ref('announcements').on('value', (snapshot) => {
-			snapshot.forEach((childSnapshot) => {
-				announcements.push({
-					_id: childSnapshot.key,
-					title: childSnapshot.val().title
-				});
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').on('value', (subjects) => {
+			let currentIndex = 0;
+			subjects.forEach((subject) => {
+				if (currentIndex == this.props.subIndex) {
+					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements').on('value', (announcements) => {
+						announcements.forEach((announcement) => {
+							allAnnouncements.push({ ...announcement.val() });
+						});
+						allAnnouncements.reverse();
+						this.setState({ allAnnouncements });
+						allAnnouncements = [];
+					});
+				}
+				currentIndex++;
 			});
-			announcements.reverse();
-
-			if (announcements.length > 4)
-				announcements = announcements.slice(0, 4);
-
-			this.setState({ announcements });
-			announcements = [];
+			currentIndex = 0;
 		});
 	}
 
@@ -43,7 +45,7 @@ class ShortAnnouncements extends React.Component {
 	}
 
 	displayShortAnnouncements() {
-		return this.state.announcements.map((announcement, index) => {
+		return this.state.allAnnouncements.map((announcement, index) => {
 			return (
 				<div key={index} className="short-announcement">{announcement.title}</div>
 			)

@@ -29,6 +29,7 @@ class AllSubjects extends React.Component {
 				});
 			});
 			this.setState({ allSubjects });
+			allSubjects = [];
 		});
 	}
 
@@ -52,7 +53,7 @@ class AllSubjects extends React.Component {
 				<Subject
 					subjectCode={subject.subjectCode}
 					subjectName={subject.subjectName}
-					instructor={subject.instructorName}
+					instructorName={subject.instructorName}
 					key={index}
 					index={index}
 					addSubjectToList={this.addSubjectToList}

@@ -32,15 +32,21 @@ class UserSubjects extends React.Component {
 					this.setState({ userSubjects });
 				});
 			});
+			userSubjectKeys = [];
+			userSubjects = [];
 		});
-		userSubjectKeys = [];
-		userSubjects = [];
 	}
 
 	displayUserSubjects() {
 		return this.state.userSubjects.map((subject, index) => {
 			return (
-				<Subject subject={subject} key={index} index={index} />
+				<Subject
+					subjectCode={subject.subjectCode}
+					subjectName={subject.subjectName}
+					instructorName={subject.instructorName}
+					key={index}
+					index={index}
+				/>
 			);
 		});
 	}

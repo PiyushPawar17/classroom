@@ -4,7 +4,6 @@ import database, { firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
 import UserSubjects from './UserSubjects';
-import Header from './Header';
 
 import '../styles/HomePage.css';
 
@@ -67,10 +66,20 @@ class HomePage extends React.Component {
 		history.push('/allsubjects');
 	}
 
+	logout() {
+		firebase.auth().signOut().then(() => {
+			history.push('/');
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
 	render() {
 		return (
 			<div className="home-page">
-				<Header />
+				<div className="home-page-header">
+					<button className="home-page-logout" onClick={this.logout}>Logout</button>
+				</div>
 				<UserSubjects dbUserKey={this.props.dbUserKey} />
 				<div className="add-subject-div" onClick={this.addSubjectHandler}>
 					<div className="add-subject-div-button">+</div>

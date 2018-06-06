@@ -50,6 +50,12 @@ class Details extends React.Component {
 		const uid = firebase.auth().currentUser.uid;
 		let key;
 
+		firebase.auth().currentUser.updateProfile({
+			displayName: this.refs.userName.value
+		}).catch((error) => {
+			console.log(error);
+		});
+
 		database.ref('users').once('value', (users) => {
 			users.forEach((user) => {
 				if (user.val().userUID === uid)

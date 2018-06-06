@@ -1,5 +1,4 @@
 import React from 'react';
-import database, { firebase } from '../firebase/firebase';
 
 import AppRouter from '../routes/AppRouter';
 

@@ -15,6 +15,9 @@ class Announcements extends React.Component {
 
 		this.state = {
 			allAnnouncements: [],
+			dbSubjectKey: '',
+			subjectName: '',
+			subjectCode: '',
 			showModal: false
 		}
 
@@ -29,6 +32,7 @@ class Announcements extends React.Component {
 	componentDidMount() {
 		let allAnnouncements = [];
 		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+
 		database.ref('users/' + this.props.dbUserKey + '/userSubjects').on('value', (subjects) => {
 			let currentIndex = 0;
 			subjects.forEach((subject) => {
@@ -40,7 +44,17 @@ class Announcements extends React.Component {
 								...announcement.val()
 							});
 						});
-						this.setState({ allAnnouncements });
+						allAnnouncements.reverse();
+						database.ref('subjects/' + subject.val().dbSubjectKey).on('value', (currentSubject) => {
+							this.setState({
+								subjectName: currentSubject.val().subjectName,
+								subjectCode: currentSubject.val().subjectCode
+							});
+						});
+						this.setState({
+							allAnnouncements,
+							dbSubjectKey: subject.val().dbSubjectKey
+						});
 						allAnnouncements = [];
 					});
 				}
@@ -60,53 +74,22 @@ class Announcements extends React.Component {
 
 	addAnnouncement(event) {
 		event.preventDefault();
-		const title = this.refs.title.value;
-		const description = this.refs.description.value;
-
-		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
-
-		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
-			let currentIndex = 0;
-			subjects.forEach((subject) => {
-				if (currentIndex == subIndex) {
-					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements').push({
-						title: title,
-						description: description
-					});
-				}
-				currentIndex++;
-			});
-
+		database.ref('subjects/' + this.state.dbSubjectKey + '/announcements').push({
+			title: this.refs.title.value,
+			description: this.refs.description.value
 		});
+
 		this.setState({ showModal: false });
 	}
 
 	editAnnouncement(updatedAnnouncement, index) {
 		let announcementID = this.state.allAnnouncements[index].announcementID;
-		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
-		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
-			let currentIndex = 0;
-			subjects.forEach((subject) => {
-				if (currentIndex == subIndex) {
-					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements/' + announcementID).set(updatedAnnouncement);
-				}
-				currentIndex++;
-			});
-		});
+		database.ref('subjects/' + this.state.dbSubjectKey + '/announcements/' + announcementID).set(updatedAnnouncement);
 	}
 
 	deleteAnnouncement(announcementIndex) {
 		let announcementID = this.state.allAnnouncements[announcementIndex].announcementID;
-		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
-		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
-			let currentIndex = 0;
-			subjects.forEach((subject) => {
-				if (currentIndex == subIndex) {
-					database.ref('subjects/' + subject.val().dbSubjectKey + '/announcements/' + announcementID).remove();
-				}
-				currentIndex++;
-			});
-		});
+		database.ref('subjects/' + this.state.dbSubjectKey + '/announcements/' + announcementID).remove();
 	}
 
 	displayAnnouncements() {
@@ -126,7 +109,7 @@ class Announcements extends React.Component {
 	render() {
 		return (
 			<div className="announcements">
-				<Header subjectCode="CS204" subject="Computer Networks" />
+				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
 				{ this.displayAnnouncements() }
 				<div className="new-announcement-div">
 					<button onClick={this.handleOpenModal} className="new-announcement-button">+</button>

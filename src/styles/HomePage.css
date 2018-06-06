@@ -1,3 +1,22 @@
+.home-page-header {
+	text-align: center;
+	font-family: 'Nunito';
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	color: white;
+	background-color: crimson;
+}
+
+.home-page-logout {
+	float: right;
+	height: 40px;
+	width: 85px;
+	margin: 10px 15px;
+	font-size: 15px;
+	font-family: 'Nunito';
+}
+
 .add-subject-div {
 	border: 1px solid black;
 	width: 300px;

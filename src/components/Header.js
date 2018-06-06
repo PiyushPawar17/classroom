@@ -10,6 +10,10 @@ class Header extends React.Component {
 		history.goBack();
 	}
 
+	goHome() {
+		history.push('/homepage');
+	}
+
 	logout() {
 		firebase.auth().signOut().then(() => {
 			history.push('/');
@@ -22,8 +26,8 @@ class Header extends React.Component {
 		return (
 			<div className="header">
 				<button className="back-button" onClick={this.goBack}>Back</button>
-				<button className="home-button">Home</button>
-				<span className="subject-name">{this.props.subjectCode} : {this.props.subject}</span>
+				<button className="home-button" onClick={this.goHome}>Home</button>
+				<span className="subject-name">{this.props.subjectCode} : {this.props.subjectName}</span>
 				<button className="logout-button" onClick={this.logout}>Logout</button>
 			</div>
 		);
