@@ -37,13 +37,22 @@ class Announcement extends React.Component {
 		this.props.deleteAnnouncement(this.props.index);
 	}
 
+	displayCustomizeButtons() {
+		return (
+			<div>
+				<button className="edit-announcement-button" onClick={this.handleOpenModal}>&#9998; Edit Announcement</button>
+				<button className="delete-announcement-button" onClick={this.deleteAnnouncement}>Delete Announcement &#10007;</button>
+			</div>
+		);
+	}
+
 	render() {
+		let editAnnouncements = this.props.userType === 'Teacher' ? this.displayCustomizeButtons() : <div></div>;
 		return (
 			<div className="announcement">
 				<div className="announcement-title">{this.props.announcement.title}</div>
 				<pre className="announcement-description">{this.props.announcement.description}</pre>
-				<button className="edit-announcement-button" onClick={this.handleOpenModal}>&#9998; Edit Announcement</button>
-				<button className="delete-announcement-button" onClick={this.deleteAnnouncement}>Delete Announcement &#10007;</button>
+				{ editAnnouncements }
 				<ReactModal isOpen={this.state.showModal} contentLabel="Edit Announcement" ariaHideApp={false} className="edit-announcement-modal">
 					<form className="edit-announcement-form" onSubmit={this.editAnnouncement}>
 						<div>Announcement Title</div>

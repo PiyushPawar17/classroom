@@ -18,6 +18,7 @@ class Announcements extends React.Component {
 			dbSubjectKey: '',
 			subjectName: '',
 			subjectCode: '',
+			userType: '',
 			showModal: false
 		}
 
@@ -62,6 +63,10 @@ class Announcements extends React.Component {
 			});
 			currentIndex = 0;
 		});
+
+		database.ref('users/' + this.props.dbUserKey).once('value').then((user) => {
+			this.setState({ userType: user.val().userType });
+		});
 	}
 
 	handleOpenModal() {
@@ -101,18 +106,20 @@ class Announcements extends React.Component {
 					index={index}
 					editAnnouncement={this.editAnnouncement}
 					deleteAnnouncement={this.deleteAnnouncement}
+					userType={this.state.userType}
 				/>
 			);
 		});
 	}
 
 	render() {
+		let addAnnouncements = this.state.userType === 'Teacher' ? <button onClick={this.handleOpenModal} className="new-announcement-button">+</button> : <div></div>;
 		return (
 			<div className="announcements">
 				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
 				{ this.displayAnnouncements() }
 				<div className="new-announcement-div">
-					<button onClick={this.handleOpenModal} className="new-announcement-button">+</button>
+					{ addAnnouncements }
 					<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false} className="new-announcement-modal">
 						<form className="new-announcement-form" onSubmit={this.addAnnouncement}>
 							<div>Announcement Title</div>
