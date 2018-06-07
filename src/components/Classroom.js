@@ -1,9 +1,16 @@
 import React from 'react';
 import { history } from '../routes/AppRouter';
+import { firebase } from '../firebase/firebase';
 
 import '../styles/Classroom.css';
 
 class Classroom extends React.Component {
+
+	constructor() {
+		super();
+
+		firebase.auth().signOut();
+	}
 
 	render() {
 		return (

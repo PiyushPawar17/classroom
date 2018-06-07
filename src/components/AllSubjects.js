@@ -3,7 +3,6 @@ import database from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
 import Subject from './Subject';
-import Header from './Header';
 
 class AllSubjects extends React.Component {
 
@@ -65,7 +64,6 @@ class AllSubjects extends React.Component {
 	render() {
 		return (
 			<div className="all-subjects">
-				<Header />
 				{ this.displayAllSubjects() }
 			</div>
 		);

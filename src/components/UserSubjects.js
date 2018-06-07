@@ -18,7 +18,7 @@ class UserSubjects extends React.Component {
 	componentDidMount() {
 		let userSubjectKeys = [];
 		let userSubjects = [];
-		database.ref('users/' + this.props.dbUserKey + '/userSubjects').once('value').then((subjects) => {
+		database.ref('users/' + this.props.dbUserKey + '/userSubjects').on('value', (subjects) => {
 			subjects.forEach((subject) => {
 				userSubjectKeys.push(subject.val().dbSubjectKey);
 			});
