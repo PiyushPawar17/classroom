@@ -1,0 +1,65 @@
+.discussion {
+	font-family: 'Nunito';
+}
+
+.discussion-title {
+	text-align: center;
+	font-size: 40px;
+}
+
+.discussion-creator {
+	font-size: 15px;
+	text-align: right;
+	padding-right: 15px;
+}
+
+.comments {
+	border-left: 3px solid #B000DE;
+	background-color: #F0F0F0;
+	margin: 15px 5px;
+	padding: 5px;
+	font-family: 'Nunito';
+}
+
+.comment-user {
+	font-size: 13px;
+}
+
+.comment {
+	font-family: 'Nunito';
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.comment-input {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	margin-bottom: 25px;
+	font-family: 'Nunito';
+	font-size: 15px;
+	resize: none;
+	outline: none;
+	height: 30px;
+	width: 88%;
+	border-radius: 3px;
+	border: 1px solid grey;
+}
+
+.comment-submit-button {
+	margin: 5px;
+	height: 42px;
+	width: 9%;
+	outline: none;
+	border-radius: 3px;
+	border: 1px solid #007DAE;
+	color: #007DAE;
+	background-color: transparent;
+	cursor: pointer;
+	transition-duration: 0.7s;
+}
+
+.comment-submit-button:hover {
+	background-color: #007DAE;
+	color: white;
+}

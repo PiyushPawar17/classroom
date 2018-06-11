@@ -13,6 +13,8 @@ import Subject from '../components/Subject';
 import UserSubjects from '../components/UserSubjects';
 import HomePage from '../components/HomePage';
 import AllSubjects from '../components/AllSubjects';
+import Discussion from '../components/Discussion';
+import Discussions from '../components/Discussions';
 
 export const history = createHistory();
 
@@ -44,6 +46,7 @@ const AppRouter = () => (
 			<Route path='/allsubjects' render={(props) => <AllSubjects {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/subjecthomepage' render={(props) => <SubjectHomePage {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/announcements' render={(props) => <Announcements {...props} dbUserKey={dbUserKey} />} />
+			<Route path='/discussion' render={(props) => <Discussion {...props} dbUserKey={dbUserKey} />} />
 		</Switch>
 	</Router>
 );

@@ -1,0 +1,96 @@
+.discussions {
+	font-family: 'Nunito';
+	margin: 0px 10px;
+	width: 500px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+	float: left;
+}
+
+.discussions-title {
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+	padding: 5px;
+	font-size: 25px;
+}
+
+.new-discussion-button {
+	margin: 5px;
+	width: 98%;
+	height: 40px;
+	background-color: transparent;
+	border: 1px solid #008EC9;
+	border-radius: 2px;
+	color: #008EC9;
+	cursor: pointer;
+	outline: none;
+	transition-duration: 0.7s;
+}
+
+.new-discussion-button:hover {
+	background-color: #008EC9;
+	color: white;
+}
+
+.new-discussion-modal {
+	font-family: 'Nunito';
+	width: 500px;
+	height: 200px;
+	margin: auto;
+	padding: 15px;
+	background-color: white;
+	border: 1px solid black;
+	outline: none;
+	transform: translateY(90%);
+}
+
+.new-discussion-form > div {
+	font-size: 20px;
+	margin: 10px 15px;
+}
+
+.new-discussion-title {
+	margin: 10px 15px;
+	padding: 5px;
+	height: 27px;
+	width: 400px;
+	font-size: 15px;
+	font-family: 'Nunito';
+	outline: none;
+	border-radius: 2px;
+	border: 1px solid grey;
+}
+
+.create-discussion-button, .discussion-close-modal-button {
+	font-family: 'Nunito';
+	cursor: pointer;
+	margin: 10px 15px;
+	width: 38%;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: white;
+	transition-duration: 0.7s;
+}
+
+.create-discussion-button {
+	color: #0AA100;
+	border: 1px solid #0AA100;
+}
+
+.create-discussion-button:hover {
+	background-color: #0AA100;
+	color: white;
+}
+
+.discussion-close-modal-button {
+	color: #DC0000;
+	border: 1px solid #DC0000;
+}
+
+.discussion-close-modal-button:hover {
+	background-color: #DC0000;
+	color: white;
+}

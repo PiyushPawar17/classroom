@@ -3,6 +3,7 @@ import { history } from '../routes/AppRouter';
 import database from '../firebase/firebase';
 import Header from './Header';
 import ShortAnnouncements from './ShortAnnouncements';
+import Discussions from './Discussions';
 
 import '../styles/SubjectHomePage.css';
 
@@ -43,6 +44,12 @@ class SubjectHomePage extends React.Component {
 			<div className="subject-home-page">
 				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
 				<ShortAnnouncements subIndex={subIndex} dbUserKey={this.props.dbUserKey} />
+				<Discussions
+					subIndex={subIndex}
+					dbUserKey={this.props.dbUserKey}
+					subjectName={this.state.subjectName}
+					subjectCode={this.state.subjectCode}
+				/>
 			</div>
 		);
 	}
