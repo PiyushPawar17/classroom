@@ -91,6 +91,7 @@ class Discusson extends React.Component {
 				<div className="discussion-title">{this.state.discussionTitle}</div>
 				<div className="discussion-creator">Created by: {this.state.createdBy}</div>
 				{ this.displayComments() }
+				<div className="extra-div"></div>
 				<textarea type="text" className="comment-input" ref="comment"></textarea>
 				<button className="comment-submit-button" onClick={this.addComment}>Comment</button>
 			</div>

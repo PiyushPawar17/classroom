@@ -21,6 +21,10 @@
 	font-family: 'Nunito';
 }
 
+.extra-div {
+	height: 100px;
+}
+
 .comment-user {
 	font-size: 13px;
 }
@@ -32,6 +36,8 @@
 }
 
 .comment-input {
+	position: fixed;
+	bottom: 15px;
 	float: left;
 	margin: 5px;
 	padding: 5px;
@@ -41,12 +47,16 @@
 	resize: none;
 	outline: none;
 	height: 30px;
+	line-height: 30px;
 	width: 88%;
 	border-radius: 3px;
 	border: 1px solid grey;
 }
 
 .comment-submit-button {
+	position: fixed;
+	bottom: 35px;
+	right: 5px;
 	margin: 5px;
 	height: 42px;
 	width: 9%;
