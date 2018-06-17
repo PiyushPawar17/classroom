@@ -9,6 +9,7 @@
 		"electron": "^2.0.0",
 		"firebase": "^5.0.3",
 		"history": "^4.7.2",
+		"rc-progress": "^2.2.5",
 		"react": "^16.3.2",
 		"react-dom": "^16.3.2",
 		"react-modal": "^3.4.4",

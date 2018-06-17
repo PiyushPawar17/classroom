@@ -1,0 +1,33 @@
+.file {
+	font-family: 'Nunito';
+	margin: 5px;
+	height: 50px;
+	line-height: 50px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+}
+
+.file-name {
+	display: inline-block;
+	padding: 5px;
+	width: 500px;
+	height: 40px;
+	line-height: 40px;
+	word-wrap: break-word;
+}
+
+.file-download-button {
+	cursor: pointer;
+	height: 30px;
+	outline: none;
+	font-family: 'Nunito';
+	border: 1px solid #BF00B8;
+	background-color: transparent;
+	color: #BF00B8;
+	transition-duration: 0.7s;
+}
+
+.file-download-button:hover {
+	background-color: #BF00B8;
+	color: white;
+}

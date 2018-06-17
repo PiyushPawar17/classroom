@@ -1,6 +1,6 @@
 import React from 'react';
 import { history } from '../routes/AppRouter';
-import database from '../firebase/firebase';
+import { database } from '../firebase/firebase';
 import Header from './Header';
 import ShortAnnouncements from './ShortAnnouncements';
 import Discussions from './Discussions';
@@ -16,6 +16,8 @@ class SubjectHomePage extends React.Component {
 			subjectName: '',
 			subjectCode: ''
 		};
+
+		this.goToStudyMaterials = this.goToStudyMaterials.bind(this);
 	}
 
 	componentDidMount() {
@@ -38,6 +40,10 @@ class SubjectHomePage extends React.Component {
 		});
 	}
 
+	goToStudyMaterials() {
+		history.push('/studymaterials?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode);
+	}
+
 	render() {
 		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
 		return (
@@ -50,6 +56,10 @@ class SubjectHomePage extends React.Component {
 					subjectName={this.state.subjectName}
 					subjectCode={this.state.subjectCode}
 				/>
+				<div className="study-material" onClick={this.goToStudyMaterials}>
+					<div className="study-material-title">Study Materials</div>
+					<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
+				</div>
 			</div>
 		);
 	}

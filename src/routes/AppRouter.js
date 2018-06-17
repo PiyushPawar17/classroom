@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import database, { firebase } from '../firebase/firebase';
+import { database, firebase } from '../firebase/firebase';
 
 import Classroom from '../components/Classroom';
 import SubjectHomePage from '../components/SubjectHomePage';
@@ -15,6 +15,9 @@ import HomePage from '../components/HomePage';
 import AllSubjects from '../components/AllSubjects';
 import Discussion from '../components/Discussion';
 import Discussions from '../components/Discussions';
+import LectureNotes from '../components/LectureNotes';
+import StudyMaterials from '../components/StudyMaterials';
+import File from '../components/File';
 
 export const history = createHistory();
 
@@ -47,6 +50,7 @@ const AppRouter = () => (
 			<Route path='/subjecthomepage' render={(props) => <SubjectHomePage {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/announcements' render={(props) => <Announcements {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/discussion' render={(props) => <Discussion {...props} dbUserKey={dbUserKey} />} />
+			<Route path='/studymaterials' render={(props) => <StudyMaterials {...props} dbUserKey={dbUserKey} /> } />
 		</Switch>
 	</Router>
 );

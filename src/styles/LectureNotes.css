@@ -1,0 +1,125 @@
+.lecture-notes {
+	margin: 10px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+	width: 650px;
+	font-family: 'Nunito';
+}
+
+.lecture-notes-heading {
+	text-align: center;
+	font-size: 25px;
+	padding: 10px;
+}
+
+.upload-notes-button {
+	margin: 10px;
+	font-family: 'Nunito';
+	font-size: 17px;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	outline: none;
+	border: 1.5px solid #2978ED;
+	color: #2978ED;
+	background-color: transparent;
+	cursor: pointer;
+	transition-duration: 0.7s;
+}
+
+.upload-notes-button:hover {
+	background-color: #2978ED;
+	color: white;
+}
+
+.add-lecture-slide-modal {
+	font-family: 'Nunito';
+	outline: none;
+	margin: 250px auto;
+	border: 1px solid black;
+	background-color: white;
+	width: 500px;
+	height: 90px;
+}
+
+.progress-bar {
+	width: 450px;
+	margin: 15px 20px;
+}
+
+.percentage-uploaded {
+	text-align: center;
+	margin: 5px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+	outline: none;
+	cursor: pointer;
+	font-family: 'Nunito';
+	margin: 18px;
+	padding: 5px;
+	font-size: 15px;
+	font-weight: 700;
+	color: #2978ED;
+	border: 1px solid #2978ED;
+	display: inline-block;
+	transition-duration: 0.7s;
+}
+
+.inputfile:focus + label, .inputfile + label:hover {
+	background-color: #2978ED;
+	color: white;
+}
+
+.close-modal, .file-upload-cancel-button {
+	outline: none;
+	cursor: pointer;
+	font-family: 'Nunito';
+	font-size: 15px;
+	padding: 5px;
+	background-color: white;
+	color: #ED2929;
+	border: 1px solid #ED2929;
+	transition-duration: 0.7s;
+}
+
+.close-modal:hover, .file-upload-cancel-button:hover {
+	background-color: #ED2929;
+	color: white;
+}
+
+.upload-file-button {
+	outline: none;
+	margin: 15px;
+	cursor: pointer;
+	font-family: 'Nunito';
+	font-size: 15px;
+	padding: 5px;
+	width: 100px;
+	background-color: white;
+	color: #00BC1E;
+	border: 1px solid #00BC1E;
+	transition-duration: 0.7s;
+}
+
+.upload-file-button:hover {
+	background-color: #00BC1E;
+	color: white;
+}
+
+.upload-file-name {
+	font-family: 'Nunito';
+	margin-right: 15px;
+	display: inline-block;
+	width: 250px;
+	word-wrap: break-word;
+}

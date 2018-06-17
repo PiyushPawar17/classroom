@@ -1,6 +1,6 @@
 import React from 'react';
 import { history } from '../routes/AppRouter';
-import database from '../firebase/firebase';
+import { database } from '../firebase/firebase';
 import Header from './Header';
 
 import '../styles/Discussion.css';

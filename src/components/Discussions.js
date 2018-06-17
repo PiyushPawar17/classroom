@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import database from '../firebase/firebase';
+import { database } from '../firebase/firebase';
 import ShortDiscussion from './ShortDiscussion';
 
 import '../styles/Discussions.css';

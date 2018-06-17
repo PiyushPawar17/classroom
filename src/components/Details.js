@@ -1,6 +1,6 @@
 import React from 'react';
 import { history } from '../routes/AppRouter';
-import database, { firebase } from '../firebase/firebase';
+import { database, firebase } from '../firebase/firebase';
 
 import '../styles/Details.css';
 

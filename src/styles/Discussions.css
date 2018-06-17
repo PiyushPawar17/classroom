@@ -8,11 +8,15 @@
 }
 
 .discussions-title {
+	position: relative;
 	text-align: center;
 	height: 35px;
+	width: 95%;
+	left: 1%;
 	line-height: 35px;
 	padding: 5px;
 	font-size: 25px;
+	border-bottom: 1px solid black;
 }
 
 .new-discussion-button {

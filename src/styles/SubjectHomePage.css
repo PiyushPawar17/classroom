@@ -1,3 +1,21 @@
 .subject-home-page {
 	background-color: #FCFCFC;
 }
+
+.study-material {
+	cursor: pointer;
+	font-family: 'Nunito';
+	float: left;
+	padding: 5px;
+	width: 500px;
+	height: 100px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+	word-wrap: break-word;
+}
+
+.study-material-title {
+	text-align: center;
+	font-size: 30px;
+	border-bottom: 1px solid black;
+}

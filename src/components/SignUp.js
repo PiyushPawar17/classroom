@@ -1,6 +1,6 @@
 import React from 'react';
 import { Notification } from 'react-notification';
-import database, { firebase } from '../firebase/firebase';
+import { database, firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
 import '../styles/SignUp.css';
