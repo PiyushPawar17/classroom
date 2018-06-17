@@ -2,6 +2,7 @@ import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
 import LectureNotes from './LectureNotes';
+import References from './References';
 import Header from './Header';
 
 class StudyMaterials extends React.Component {
@@ -29,6 +30,7 @@ class StudyMaterials extends React.Component {
 			<div className="study-materials">
 				<Header subjectCode={subjectCode} subjectName={subjectName} />
 				<LectureNotes isTeacher={this.state.isTeacher} subjectCode={subjectCode} subjectName={subjectName} />
+				<References isTeacher={this.state.isTeacher} subjectCode={subjectCode} subjectName={subjectName} />
 			</div>
 		);
 	}

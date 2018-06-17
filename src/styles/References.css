@@ -1,4 +1,4 @@
-.lecture-notes {
+.references {
 	float: left;
 	margin: 10px;
 	border: 1px solid black;
@@ -7,13 +7,13 @@
 	font-family: 'Nunito';
 }
 
-.lecture-notes-heading {
+.references-heading {
 	text-align: center;
 	font-size: 25px;
 	padding: 10px;
 }
 
-.upload-notes-button {
+.upload-references-button {
 	margin: 10px;
 	font-family: 'Nunito';
 	font-size: 17px;
@@ -28,12 +28,12 @@
 	transition-duration: 0.7s;
 }
 
-.upload-notes-button:hover {
+.upload-references-button:hover {
 	background-color: #2978ED;
 	color: white;
 }
 
-.add-lecture-slide-modal {
+.add-references-modal {
 	font-family: 'Nunito';
 	outline: none;
 	margin: 250px auto;
@@ -124,3 +124,4 @@
 	width: 250px;
 	word-wrap: break-word;
 }
+
