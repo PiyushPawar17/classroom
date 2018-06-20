@@ -15,8 +15,8 @@ class LectureNotes extends React.Component {
 		this.state = {
 			percentage: 0,
 			file: null,
-			upload: false,
 			showModal: false,
+			uploadButton: false,
 			isUploading: false,
 			files: []
 		};
@@ -57,13 +57,13 @@ class LectureNotes extends React.Component {
 
 	addUploadButton(event) {
 		this.setState({
-			upload: true,
+			uploadButton: true,
 			file: event.target.files[0]
 		});
 	}
 
 	cancelUpload() {
-		this.setState({ upload: false });
+		this.setState({ uploadButton: false });
 	}
 
 	uploadFile() {
@@ -85,7 +85,7 @@ class LectureNotes extends React.Component {
 					this.setState({
 						percentage: 0,
 						file: null,
-						upload: false,
+						uploadButton: false,
 						showModal: false,
 						isUploading: false
 					});
@@ -114,7 +114,7 @@ class LectureNotes extends React.Component {
 	}
 
 	render() {
-		let button = this.state.upload ?
+		let button = this.state.uploadButton ?
 			<div>
 				{
 					this.state.isUploading ?

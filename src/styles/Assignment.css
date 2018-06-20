@@ -1,0 +1,86 @@
+.assignment {
+	margin: 10px;
+	padding: 5px;
+	font-family: 'Nunito';
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+	min-height: 200px;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+.assignment-info {
+	display: inline-block;
+	width: 55%;
+	padding: 5px;
+	margin: 5px;
+	border-right: 1px solid black;
+}
+
+.assignment-title {
+	padding: 5px;
+	font-size: 25px;
+	border-bottom: 1px solid black;
+	word-wrap: break-word;
+}
+
+.assignment-description {
+	padding: 5px;
+	font-family: 'Nunito';
+	white-space: pre-wrap;
+}
+
+.assignment-file {
+	min-height: 50px;
+	width: 500px;
+	line-height: 50px;
+	padding-left: 5px;
+	border: 1px solid black;
+	margin: 5px;
+	word-wrap: break-word;
+}
+
+.assignment-file-name {
+	width: 400px;
+	display: inline-block;
+}
+
+.assignment-file-view-button {
+	cursor: pointer;
+	margin-left: 10px;
+	height: 30px;
+	outline: none;
+	font-family: 'Nunito';
+	border: 1px solid #BF00B8;
+	background-color: transparent;
+	color: #BF00B8;
+	transition-duration: 0.7s;
+}
+
+.assignment-file-view-button:hover {
+	background-color: #BF00B8;
+	color: white;
+}
+
+.submission-date {
+	margin: 5px;
+	font-size: 13px;
+	color: grey;
+}
+
+.assignment > button {
+	cursor: pointer;
+	padding: 5px;
+	font-family: 'Nunito';
+	border: 1px solid #0060D7;
+	outline: none;
+	color: #0060D7;
+	background-color: transparent;
+	margin: 5px;
+	transition-duration: 0.7s;
+}
+
+.assignment > button:hover {
+	background-color: #0060D7;
+	color: white;
+}

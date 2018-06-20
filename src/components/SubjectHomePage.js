@@ -18,6 +18,7 @@ class SubjectHomePage extends React.Component {
 		};
 
 		this.goToStudyMaterials = this.goToStudyMaterials.bind(this);
+		this.goToAssignments = this.goToAssignments.bind(this);
 	}
 
 	componentDidMount() {
@@ -44,6 +45,10 @@ class SubjectHomePage extends React.Component {
 		history.push('/studymaterials?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode);
 	}
 
+	goToAssignments() {
+		history.push('/assignments?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode);
+	}
+
 	render() {
 		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
 		return (
@@ -59,6 +64,10 @@ class SubjectHomePage extends React.Component {
 				<div className="study-material" onClick={this.goToStudyMaterials}>
 					<div className="study-material-title">Study Materials</div>
 					<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
+				</div>
+				<div className="assignment-div" onClick={this.goToAssignments}>
+					<div className="assignment-div-title">Assignments</div>
+					<p>Contains Assignments and Lab Works to be submitted by students.</p>
 				</div>
 			</div>
 		);

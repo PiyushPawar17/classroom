@@ -59,6 +59,7 @@
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;
+	font-family: 'Nunito';
 	z-index: -1;
 }
 

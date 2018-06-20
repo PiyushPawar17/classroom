@@ -1,0 +1,91 @@
+.new-assignment-button {
+	cursor: pointer;
+	outline: none;
+	font-family: 'Nunito';
+	margin: 15px;
+	padding: 5px;
+	height: 30px;
+	outline: none;
+	background-color: white;
+	color: #0AA100;
+	border: 1px solid #0AA100;
+	transition-duration: 0.7s;
+}
+
+.new-assignment-button:hover {
+	background-color: #0AA100;
+	color: white;
+}
+
+.new-assignment-modal {
+	font-family: 'Nunito';
+	margin: auto;
+	height: 530px;
+	width: 900px;
+	transform: translateY(10%);
+	background-color: white;
+	outline: none;
+	border: 1px solid black;
+}
+
+.new-assignment-form > div {
+	margin: 5px 15px;
+	padding: 5px;
+}
+
+.new-assignment-form > textarea {
+	border: 1px solid grey;
+	font-family: 'Nunito';
+	margin: 5px 15px;
+	padding: 5px;
+	resize: none;
+	outline: none;
+	word-wrap: break-word;
+}
+
+.new-assignment-title {
+	width: 850px;
+	height: 25px;
+	font-size: 15px;
+}
+
+.new-assignment-description {
+	width: 850px;
+	min-height: 75px;
+	font-size: 15px;
+}
+
+.uploaded-file-name {
+	margin: 15px;
+}
+
+.date-picker {
+	cursor: pointer;
+	outline: none;
+	width: 200px;
+	height: 20px;
+	border: 1px solid grey;
+	padding: 5px;
+	font-family: 'Nunito';
+}
+
+.react-datepicker__time-list {
+	transform: translateX(-30px);
+}
+
+.create-assignment-button {
+	cursor: pointer;
+	font-family: 'Nunito';
+	margin: 20px;
+	padding: 7px;
+	outline: none;
+	color: #0AA100;
+	border: 1px solid #0AA100;
+	background-color: white;
+	transition-duration: 0.7s;
+}
+
+.create-assignment-button:hover {
+	background-color: #0AA100;
+	color: white;
+}

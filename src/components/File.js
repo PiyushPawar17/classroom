@@ -23,7 +23,7 @@ class File extends React.Component {
 		return (
 			<div className="file">
 				<div className="file-name">{this.props.fileName}</div>
-				<button className="file-download-button" onClick={this.view}>View &#128065;</button>
+				<button className="file-view-button" onClick={this.view}>View &#128065;</button>
 			</div>
 		);
 	}

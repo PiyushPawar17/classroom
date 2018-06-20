@@ -16,7 +16,7 @@
 	word-wrap: break-word;
 }
 
-.file-download-button {
+.file-view-button {
 	cursor: pointer;
 	height: 30px;
 	outline: none;
@@ -27,7 +27,7 @@
 	transition-duration: 0.7s;
 }
 
-.file-download-button:hover {
+.file-view-button:hover {
 	background-color: #BF00B8;
 	color: white;
 }
