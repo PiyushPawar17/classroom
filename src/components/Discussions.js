@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import moment from 'moment';
 import { database } from '../firebase/firebase';
 import ShortDiscussion from './ShortDiscussion';
 
@@ -36,6 +37,7 @@ class Discussions extends React.Component {
 								...discussion.val()
 							});
 						});
+						allDiscussions.reverse();
 						this.setState({
 							dbSubjectKey: subject.val().dbSubjectKey,
 							allDiscussions
@@ -63,7 +65,9 @@ class Discussions extends React.Component {
 		database.ref('users/' + this.props.dbUserKey).once('value').then((user) => {
 			database.ref('subjects/' + this.state.dbSubjectKey + '/discussions').push({
 				discussionTitle: this.refs.title.value,
-				createdBy: user.val().userName
+				createdBy: user.val().userName,
+				createdOn: moment().format('MMMM DD, YYYY, hh:mm A'),
+				isOpen: true
 			});
 			this.handleCloseModal();
 		});
@@ -71,11 +75,12 @@ class Discussions extends React.Component {
 
 	displayDiscussions() {
 		return this.state.allDiscussions.map((discussion, index) => {
+			const discussionIndex = this.state.allDiscussions.length - index - 1;
 			return (
 				<ShortDiscussion
 					discussion={discussion}
 					key={index}
-					index={index}
+					index={discussionIndex}
 					subIndex={this.props.subIndex}
 					dbUserKey={this.props.dbUserKey}
 					subjectName={this.props.subjectName}

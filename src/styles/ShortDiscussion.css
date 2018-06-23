@@ -13,7 +13,7 @@
 	word-wrap: break-word;
 }
 
-.short-discussion-creator {
+.short-discussion-creator, .short-discussion-created-on {
 	font-size: 12px;
 	word-wrap: break-word;
 }

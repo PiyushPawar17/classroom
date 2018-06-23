@@ -36,7 +36,6 @@
 	font-size: 15px;
 	border: 1px solid grey;
 	padding-left: 5px;
-	border-radius: 3px;
 }
 
 .details-name:invalid, .details-id:invalid {
@@ -58,7 +57,6 @@
 	width: 150px;
 	outline: none;
 	background-color: transparent;
-	border-radius: 5px;
 	cursor: pointer;
 	font-family: 'Nunito';
 	transition-duration: 0.7s;

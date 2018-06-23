@@ -31,7 +31,6 @@
 	font-size: 15px;
 	border: 1px solid grey;
 	padding-left: 2px;
-	border-radius: 3px;
 }
 
 .sign-in-button, .sign-in-cancel-button {
@@ -40,14 +39,13 @@
 	width: 150px;
 	outline: none;
 	background-color: transparent;
-	border-radius: 5px;
 	cursor: pointer;
 	font-family: 'Nunito';
 	transition-duration: 0.7s;
 }
 
 .sign-in-button {
-	border: 1.5px solid #0AA100;
+	border: 1px solid #0AA100;
 	color: #0AA100;
 }
 
@@ -57,7 +55,7 @@
 }
 
 .sign-in-cancel-button {
-	border: 1.5px solid #DC0000;
+	border: 1px solid #DC0000;
 	color: #DC0000;
 }
 

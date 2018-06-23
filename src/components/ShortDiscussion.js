@@ -24,7 +24,8 @@ class ShortDiscussion extends React.Component {
 		return (
 			<div className="short-discussion" onClick={this.openDiscussion}>
 				<div className="short-discussion-title">{this.props.discussion.discussionTitle}</div>
-				<div className="short-discussion-creator">Created By: {this.props.discussion.createdBy}</div>
+				<div className="short-discussion-creator">Created by: {this.props.discussion.createdBy}</div>
+				<div className="short-discussion-created-on">Created on: {this.props.discussion.createdOn}</div>
 			</div>
 		);
 	}
