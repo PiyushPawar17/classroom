@@ -10,11 +10,8 @@
 }
 
 .assignment-info {
-	display: inline-block;
-	width: 55%;
 	padding: 5px;
 	margin: 5px;
-	border-right: 1px solid black;
 }
 
 .assignment-title {
@@ -22,6 +19,16 @@
 	font-size: 25px;
 	border-bottom: 1px solid black;
 	word-wrap: break-word;
+}
+
+.submission-status {
+	padding: 5px;
+	font-size: 15px;
+}
+
+.submitted-on {
+	padding: 5px;
+	font-size: 15px;
 }
 
 .assignment-description {
@@ -83,4 +90,49 @@
 .assignment > button:hover {
 	background-color: #0060D7;
 	color: white;
+}
+
+.submission-info {
+	margin: 5px;
+	padding: 5px;
+}
+
+.submission-title {
+	border-bottom: 1px solid black;
+	font-size: 17px;
+	margin: 5px;
+}
+
+.submit-button {
+	cursor: pointer;
+	margin-left: 15px;
+	padding: 7px;
+	font-family: 'Nunito';
+	font-size: 15px;
+	outline: none;
+	color: #0AA100;
+	border: 1px solid #0AA100;
+	background-color: transparent;
+	transition-duration: 0.7s;
+}
+
+.submit-button:hover {
+	background-color: #0AA100;
+	color: white;
+}
+
+.assignment-submitted {
+	color: #18B313;
+}
+
+.assignment-done-late {
+	color: #E7740A;
+}
+
+.assignment-missing {
+	color: #E11111;
+}
+
+.assignment-pending {
+	color: #AAAAAA;
 }

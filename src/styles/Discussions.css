@@ -2,9 +2,12 @@
 	font-family: 'Nunito';
 	margin: 0px 10px;
 	width: 500px;
+	max-height: 800px;
 	border: 1px solid black;
 	box-shadow: 1px 1px 1px black;
 	float: left;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .discussions-title {

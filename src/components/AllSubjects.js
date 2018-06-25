@@ -1,5 +1,5 @@
 import React from 'react';
-import { database } from '../firebase/firebase';
+import { database, firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
 import Subject from './Subject';
@@ -32,6 +32,22 @@ class AllSubjects extends React.Component {
 		});
 	}
 
+	goBack() {
+		history.goBack();
+	}
+
+	goHome() {
+		history.push('/homepage');
+	}
+
+	logout() {
+		firebase.auth().signOut().then(() => {
+			history.push('/');
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
 	addSubjectToList(subjectIndex) {
 		let currentIndex = 0;
 		database.ref('subjects').once('value').then((subjects) => {
@@ -39,7 +55,21 @@ class AllSubjects extends React.Component {
 				if (subjectIndex === currentIndex) {
 					database.ref('users/' + this.props.dbUserKey + '/userSubjects').push({
 						dbSubjectKey: subject.key
-					}).then(() => history.push('/homepage'));
+					});
+					let allAssignments = [];
+					database.ref('subjects/' + subject.key + '/assignments').once('value').then((assignments) => {
+						assignments.forEach((assignment) => {
+							allAssignments.push(assignment.val().assignmentNumber);
+						});
+						allAssignments.forEach((assignment) => {
+							database.ref('users/' +
+								this.props.dbUserKey +
+								'/userAssignments/' +
+								subject.val().subjectCode + '_' + subject.val().subjectName +
+								'/assignment_' + assignment
+							).set({ isDone: false }).then(() => history.push('/homepage'));
+						});
+					});
 				}
 				currentIndex++;
 			});
@@ -64,6 +94,11 @@ class AllSubjects extends React.Component {
 	render() {
 		return (
 			<div className="all-subjects">
+				<div className="home-page-header">
+					<button className="back-button" onClick={this.goBack}>Back</button>
+					<button className="home-button" onClick={this.goHome}>Home</button>
+					<button className="logout-button" onClick={this.logout}>Logout</button>
+				</div>
 				{ this.displayAllSubjects() }
 			</div>
 		);

@@ -4,14 +4,12 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { Line } from 'rc-progress';
 
-import Header from './Header';
-import Assignment from './Assignment';
-import { history } from '../routes/AppRouter';
 import { database, storage } from '../firebase/firebase';
 
-import '../styles/Assignments.css';
-import 'react-datepicker/dist/react-datepicker.css';
+import ShortAssignment from './ShortAssignment';
 
+import 'react-datepicker/dist/react-datepicker.css';
+import '../styles/Assignments.css'
 class Assignments extends React.Component {
 
 	constructor() {
@@ -27,7 +25,6 @@ class Assignments extends React.Component {
 			uploadButton: false,
 			isUploading: false,
 			isTeacher: false,
-			dbSubjectKey: ''
 		};
 
 		this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -41,33 +38,23 @@ class Assignments extends React.Component {
 		this.displayAssignments = this.displayAssignments.bind(this);
 	}
 
-	componentDidMount() {
-		let allAssignments = [];
-		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
-		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps !== this.props) {
+			let allAssignments = [];
 
-		database.ref('users/' + this.props.dbUserKey).on('value', (user) => {
-			if (user.val().userType === 'Teacher') {
-				this.setState({ isTeacher: true });
-			}
-		});
-
-		database.ref('subjects').on('value', (subjects) => {
-			subjects.forEach((subject) => {
-				if (subject.val().subjectCode === subjectCode && subject.val().subjectName === subjectName) {
-					database.ref('subjects/' + subject.key + '/assignments').once('value').then((assignments) => {
-						assignments.forEach((assignment) => {
-							allAssignments.push({ ...assignment.val() });
-						});
-						this.setState({
-							allAssignments,
-							dbSubjectKey: subject.key
-						});
-						allAssignments = [];
-					});
+			database.ref('users/' + this.props.dbUserKey).on('value', (user) => {
+				if (user.val().userType === 'Teacher') {
+					this.setState({ isTeacher: true });
 				}
 			});
-		});
+			database.ref('subjects/' + this.props.dbSubjectKey + '/assignments').on('value', (assignments) => {
+				assignments.forEach((assignment) => {
+					allAssignments.push({ ...assignment.val() });
+				});
+				this.setState({ allAssignments });
+				allAssignments = [];
+			});
+		}
 	}
 
 	handleOpenModal() {
@@ -101,15 +88,14 @@ class Assignments extends React.Component {
 
 	uploadFile() {
 		const { file } = this.state;
-		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
-		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
-		const assignmentTitle = this.refs.title.value.replace(/ /g, '_');
+		const { subjectName, subjectCode } = this.props;
+		const assignmentNumber = this.refs.title.value;
 		let uploadedFiles = [...this.state.uploadedFiles];
 		let metadata;
 
 		this.setState({ isUploading: true });
 
-		storage.ref('assignment_files/' + subjectCode + '_' + subjectName + '/' + assignmentTitle + '/' + file.name).put(file).on('state_changed',
+		storage.ref('assignment_files/' + subjectCode + '_' + subjectName + '/assignment_' + assignmentNumber + '/' + file.name).put(file).on('state_changed',
 			(fileSnapshot) => {
 				let percentage = (fileSnapshot.bytesTransferred / fileSnapshot.totalBytes) * 100;
 				metadata = fileSnapshot.metadata;
@@ -148,55 +134,51 @@ class Assignments extends React.Component {
 
 	createAssignment(event) {
 		event.preventDefault();
-		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
-		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
 
-		database.ref('subjects').once('value').then((subjects) => {
-			subjects.forEach((subject) => {
-				if (subject.val().subjectCode === subjectCode && subject.val().subjectName === subjectName) {
-					database.ref('subjects/' + subject.key + '/assignments').push({
-						assignmentTitle: this.refs.title.value,
-						assignmentDescription: this.refs.description.value,
-						submissionDate: this.state.date.format('MMMM DD, YYYY, hh:mm A'),
-						assignmentFiles: this.state.uploadedFiles
-					}).then(() => {
-						this.setState({
-							uploadedFiles: [],
-							showModal: false
+		database.ref('subjects/' + this.props.dbSubjectKey + '/assignments').push({
+			assignmentNumber: this.refs.title.value,
+			assignmentDescription: this.refs.description.value,
+			submissionDate: this.state.date.format('MMMM DD, YYYY, hh:mm A'),
+			assignmentFiles: this.state.uploadedFiles
+		}).then(() => {
+			let subjectName = this.props.subjectCode + '_' + this.props.subjectName;
+			let assignmentNumber = this.refs.title.value;
+			database.ref('users').once('value').then((users) => {
+				users.forEach((user) => {
+					database.ref('users/' + user.key + '/userSubjects').once('value').then((userSubjects) => {
+						userSubjects.forEach((subject) => {
+							if (subject.val().dbSubjectKey === this.props.dbSubjectKey && user.val().userType === 'Student') {
+								database.ref('users/' + user.key + '/userAssignments/' + subjectName + '/assigment_' + assignmentNumber).set({
+									isDone: false
+								});
+							}
 						});
 					});
-				}
+				});
+			});
+			this.setState({
+				uploadedFiles: [],
+				showModal: false
 			});
 		});
 	}
 
 	displayAssignments() {
 		return this.state.allAssignments.map((assignment, index) => {
-			let files = [];
-			assignment.assignmentFiles.forEach((file, index) => {
-				files.push({
-					...file,
-					fileIndex: index
-				});
-			});
 			return (
-				<Assignment
-					assignmentTitle={assignment.assignmentTitle}
-					assignmentDescription={assignment.assignmentDescription}
-					submissionDate={assignment.submissionDate}
-					assignmentFiles={files}
-					isTeacher={this.state.isTeacher}
-					index={index}
+				<ShortAssignment
+					assignment={assignment}
+					dbSubjectKey={this.props.dbSubjectKey}
+					subjectCode={this.props.subjectCode}
+					subjectName={this.props.subjectName}
 					key={index}
+					index={index}
 				/>
 			);
 		});
 	}
 
 	render() {
-		let subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
-		let subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
-
 		let button = this.state.uploadButton ?
 			<div>
 				{
@@ -229,19 +211,18 @@ class Assignments extends React.Component {
 				<input type="file" name="file" id="file" className="inputfile" onChange={this.addUploadButton} />
 				<label htmlFor="file">&#8686; Choose a file</label>
 			</div>;
-
-		let createAssignments = this.state.isTeacher ? <button className="new-assignment-button" onClick={this.handleOpenModal}>Create a new assignment</button> : null;
+		let createAssignments = this.state.isTeacher ? <button className="new-assignment-button" onClick={this.handleOpenModal}>Create a new Assignment</button> : null;
 
 		return (
 			<div className="assignments">
-				<Header subjectCode={subjectCode} subjectName={subjectName} />
+				<div className="assignments-title">Assignments</div>
 				{ this.displayAssignments() }
 				{ createAssignments }
 				<ReactModal isOpen={this.state.showModal} contentLabel="Add Assignment" ariaHideApp={false} className="new-assignment-modal">
 					<form className="new-assignment-form" onSubmit={this.createAssignment}>
-						<div>Assignment Title</div>
-						<textarea type="text" className="new-assignment-title" ref="title" required></textarea>
-						<div>Assignment Description (Optional)</div>
+						<div>Assignment Number</div>
+						<textarea type="number" className="new-assignment-title" ref="title" required></textarea>
+						<div>Assignment Description</div>
 						<textarea type="text" className="new-assignment-description" ref="description"></textarea>
 						<br />
 						{ this.displayUploadedFiles() }

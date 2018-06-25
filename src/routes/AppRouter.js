@@ -20,6 +20,7 @@ import StudyMaterials from '../components/StudyMaterials';
 import File from '../components/File';
 import Assignment from '../components/Assignment';
 import Assignments from '../components/Assignments';
+import ShortAssignment from '../components/ShortAssignment';
 
 export const history = createHistory();
 
@@ -53,7 +54,7 @@ const AppRouter = () => (
 			<Route path='/announcements' render={(props) => <Announcements {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/discussion' render={(props) => <Discussion {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/studymaterials' render={(props) => <StudyMaterials {...props} dbUserKey={dbUserKey} /> } />
-			<Route path='/assignments' render={(props) => <Assignments {...props} dbUserKey={dbUserKey} /> } />
+			<Route path='/assignment' render={(props) => <Assignment {...props} dbUserKey={dbUserKey} /> } />
 		</Switch>
 	</Router>
 );

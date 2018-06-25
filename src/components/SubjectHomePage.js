@@ -4,6 +4,7 @@ import { database } from '../firebase/firebase';
 import Header from './Header';
 import ShortAnnouncements from './ShortAnnouncements';
 import Discussions from './Discussions';
+import Assignments from './Assignments';
 
 import '../styles/SubjectHomePage.css';
 
@@ -14,11 +15,11 @@ class SubjectHomePage extends React.Component {
 
 		this.state = {
 			subjectName: '',
-			subjectCode: ''
+			subjectCode: '',
+			dbSubjectKey: ''
 		};
 
 		this.goToStudyMaterials = this.goToStudyMaterials.bind(this);
-		this.goToAssignments = this.goToAssignments.bind(this);
 	}
 
 	componentDidMount() {
@@ -31,7 +32,8 @@ class SubjectHomePage extends React.Component {
 					database.ref('subjects/' + subject.val().dbSubjectKey).on('value', (currentSubject) => {
 						this.setState({
 							subjectName: currentSubject.val().subjectName,
-							subjectCode: currentSubject.val().subjectCode
+							subjectCode: currentSubject.val().subjectCode,
+							dbSubjectKey: subject.val().dbSubjectKey
 						});
 					});
 				}
@@ -43,10 +45,6 @@ class SubjectHomePage extends React.Component {
 
 	goToStudyMaterials() {
 		history.push('/studymaterials?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode);
-	}
-
-	goToAssignments() {
-		history.push('/assignments?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode);
 	}
 
 	render() {
@@ -65,10 +63,12 @@ class SubjectHomePage extends React.Component {
 					<div className="study-material-title">Study Materials</div>
 					<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
 				</div>
-				<div className="assignment-div" onClick={this.goToAssignments}>
-					<div className="assignment-div-title">Assignments</div>
-					<p>Contains Assignments and Lab Works to be submitted by students.</p>
-				</div>
+				<Assignments
+					dbUserKey={this.props.dbUserKey}
+					dbSubjectKey={this.state.dbSubjectKey}
+					subjectCode={this.state.subjectCode}
+					subjectName={this.state.subjectName}
+				/>
 			</div>
 		);
 	}

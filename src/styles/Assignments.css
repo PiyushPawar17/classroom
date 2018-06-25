@@ -1,19 +1,34 @@
+.assignments {
+	display: inline-block;
+	font-family: 'Nunito';
+	width: 550px;
+	margin-top: 5px;
+	padding: 5px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+}
+
+.assignments-title {
+	font-size: 25px;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
 .new-assignment-button {
+	margin: 5px;
+	width: 98%;
+	height: 40px;
+	background-color: transparent;
+	border: 1px solid #008EC9;
+	border-radius: 2px;
+	color: #008EC9;
 	cursor: pointer;
 	outline: none;
-	font-family: 'Nunito';
-	margin: 15px;
-	padding: 5px;
-	height: 30px;
-	outline: none;
-	background-color: white;
-	color: #0AA100;
-	border: 1px solid #0AA100;
 	transition-duration: 0.7s;
 }
 
 .new-assignment-button:hover {
-	background-color: #0AA100;
+	background-color: #008EC9;
 	color: white;
 }
 
@@ -89,3 +104,4 @@
 	background-color: #0AA100;
 	color: white;
 }
+

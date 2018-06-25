@@ -1,0 +1,27 @@
+.short-assignment {
+	cursor: pointer;
+	font-family: 'Nunito';
+	padding: 5px;
+	background-color: #F0F0F0;
+	border-left: 3px solid #AC19A6;
+	margin: 5px;
+}
+
+.short-assignment-number {
+	margin: 2px;
+}
+
+.short-assignment-due {
+	margin: 2px;
+	font-size: 12px;
+}
+/*
+- userAssignments
+	- HIST_History
+		- Assignment_1
+			- isDone
+			- files
+				- file names
+				- file paths
+			- submittedOn
+*/

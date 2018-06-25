@@ -19,24 +19,3 @@
 	font-size: 30px;
 	border-bottom: 1px solid black;
 }
-
-.assignment-div {
-	cursor: pointer;
-	font-family: 'Nunito';
-	float: right;
-	margin-top: 15px;
-	margin-right: 10px;
-	padding: 5px;
-	width: 550px;
-	height: 100px;
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
-	word-wrap: break-word;
-}
-
-.assignment-div-title {
-	text-align: center;
-	font-size: 30px;
-	border-bottom: 1px solid black;
-}
-
