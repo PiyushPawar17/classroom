@@ -4,23 +4,16 @@ import createHistory from 'history/createBrowserHistory';
 import { database, firebase } from '../firebase/firebase';
 
 import Classroom from '../components/Classroom';
-import SubjectHomePage from '../components/SubjectHomePage';
-import Announcements from '../components/Announcements';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import Details from '../components/Details';
-import Subject from '../components/Subject';
-import UserSubjects from '../components/UserSubjects';
 import HomePage from '../components/HomePage';
-import AllSubjects from '../components/AllSubjects';
+import SubjectHomePage from '../components/SubjectHomePage';
+import Announcements from '../components/Announcements';
 import Discussion from '../components/Discussion';
-import Discussions from '../components/Discussions';
-import LectureNotes from '../components/LectureNotes';
 import StudyMaterials from '../components/StudyMaterials';
-import File from '../components/File';
 import Assignment from '../components/Assignment';
-import Assignments from '../components/Assignments';
-import ShortAssignment from '../components/ShortAssignment';
+import AllSubjects from '../components/AllSubjects';
 
 export const history = createHistory();
 

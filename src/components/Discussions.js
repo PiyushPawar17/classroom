@@ -2,6 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import moment from 'moment';
 import { database } from '../firebase/firebase';
+
 import ShortDiscussion from './ShortDiscussion';
 
 import '../styles/Discussions.css';

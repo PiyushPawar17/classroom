@@ -1,9 +1,9 @@
 import React from 'react';
 import { Line } from 'rc-progress';
 import ReactModal from 'react-modal';
-import File from './File';
-
 import { database, storage } from '../firebase/firebase';
+
+import File from './File';
 
 import '../styles/LectureNotes.css';
 

@@ -19,3 +19,8 @@
 	font-size: 30px;
 	border-bottom: 1px solid black;
 }
+
+.assignments-study-material {
+	width: 560px;
+	display: inline-block;
+}

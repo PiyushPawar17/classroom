@@ -78,7 +78,8 @@ class HomePage extends React.Component {
 		return (
 			<div className="home-page">
 				<div className="home-page-header">
-					<button className="home-page-logout" onClick={this.logout}>Logout</button>
+					<span className="home-page-header-title">Your Subjects</span>
+					<button className="logout-button" onClick={this.logout}>Logout</button>
 				</div>
 				<UserSubjects dbUserKey={this.props.dbUserKey} />
 				<div className="add-subject-div" onClick={this.addSubjectHandler}>

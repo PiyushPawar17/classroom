@@ -1,6 +1,7 @@
 import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
+
 import Header from './Header';
 import ShortAnnouncements from './ShortAnnouncements';
 import Discussions from './Discussions';
@@ -59,16 +60,18 @@ class SubjectHomePage extends React.Component {
 					subjectName={this.state.subjectName}
 					subjectCode={this.state.subjectCode}
 				/>
-				<div className="study-material" onClick={this.goToStudyMaterials}>
-					<div className="study-material-title">Study Materials</div>
-					<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
+				<div className="assignments-study-material">
+					<div className="study-material" onClick={this.goToStudyMaterials}>
+						<div className="study-material-title">Study Materials</div>
+						<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
+					</div>
+					<Assignments
+						dbUserKey={this.props.dbUserKey}
+						dbSubjectKey={this.state.dbSubjectKey}
+						subjectCode={this.state.subjectCode}
+						subjectName={this.state.subjectName}
+					/>
 				</div>
-				<Assignments
-					dbUserKey={this.props.dbUserKey}
-					dbSubjectKey={this.state.dbSubjectKey}
-					subjectCode={this.state.subjectCode}
-					subjectName={this.state.subjectName}
-				/>
 			</div>
 		);
 	}

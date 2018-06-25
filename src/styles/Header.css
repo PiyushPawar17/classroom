@@ -10,11 +10,22 @@
 }
 
 .back-button, .home-button, .logout-button {
+	cursor: pointer;
+	background-color: white;
+	border: 1px solid white;
+	outline: none;
+	color: crimson;
 	height: 40px;
 	width: 85px;
 	margin: 10px 5px;
 	font-size: 15px;
 	font-family: 'Nunito';
+	transition-duration: 0.7s;
+}
+
+.back-button:hover, .home-button:hover, .logout-button:hover {
+	background-color: crimson;
+	color: white;
 }
 
 .back-button, .home-button {

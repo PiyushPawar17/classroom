@@ -1,4 +1,5 @@
 import React from 'react';
+import { Notification } from 'react-notification';
 import { firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
@@ -8,6 +9,11 @@ class SignIn extends React.Component {
 
 	constructor() {
 		super();
+
+		this.state = {
+			errorSnackbar: false,
+			errorMessage: ''
+		};
 
 		this.signIn = this.signIn.bind(this);
 	}
@@ -19,13 +25,24 @@ class SignIn extends React.Component {
 				history.push('/homepage');
 			}, 500);
 		}).catch((error) => {
-			console.log(error.code, error.message);
+			this.setState({
+				errorSnackbar: true,
+				errorMessage: error.message
+			}, () => {
+				setTimeout(() => {
+					this.setState({
+						errorSnackbar: false,
+						errorMessage: ''
+					});
+				}, 3000);
+			});
 		});
 	}
 
 	render() {
 		return (
 			<div className="sign-in" onSubmit={this.signIn}>
+				<Notification isActive={this.state.errorSnackbar} message={this.state.errorMessage} title="Error" />
 				<div className="sign-in-title">Sign In</div>
 				<form className="sign-in-form">
 					<div>Email</div>

@@ -8,6 +8,10 @@
 	background-color: crimson;
 }
 
+.home-page-header-title {
+	font-size: 25px;
+}
+
 .home-page-logout {
 	float: right;
 	height: 40px;

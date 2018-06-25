@@ -136,3 +136,24 @@
 .assignment-pending {
 	color: #AAAAAA;
 }
+
+.student-submission-list {
+	font-family: 'Nunito';
+}
+
+.student-list-title {
+	text-align: center;
+	font-size: 25px;
+}
+
+.student {
+	font-size: 15px;
+	border-bottom: 1px solid black;
+	width: 45%;
+	margin: 10px;
+	padding: 10px;
+}
+
+.no-shadow {
+	box-shadow: none;
+}

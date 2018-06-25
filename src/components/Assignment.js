@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import { Line } from 'rc-progress';
+import { history } from '../routes/AppRouter';
 import { database, storage } from '../firebase/firebase';
 
 import Header from './Header';
-import { history } from '../routes/AppRouter';
+import File from './File';
 
 import '../styles/Assignment.css';
 
@@ -28,7 +29,8 @@ class Assignment extends React.Component {
 			submittedOn: '',
 			submissionStatus: '',
 			userType: '',
-			studentID: ''
+			studentID: '',
+			studentList: []
 		};
 
 		this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -38,6 +40,7 @@ class Assignment extends React.Component {
 		this.cancelUpload = this.cancelUpload.bind(this);
 		this.displayFiles = this.displayFiles.bind(this);
 		this.displayUploadedFiles = this.displayUploadedFiles.bind(this);
+		this.displayStudentList = this.displayStudentList.bind(this);
 		this.viewAssignmentFiles = this.viewAssignmentFiles.bind(this);
 		this.submitAssignment = this.submitAssignment.bind(this);
 	}
@@ -102,6 +105,34 @@ class Assignment extends React.Component {
 						submittedOn: assignment.val().submittedOn,
 						submissionStatus
 					});
+				});
+			}
+			else {
+				let studentList = [];
+				let currentSubject = subjectCode + '_' + subjectName;
+				database.ref('users').on('value', (users) => {
+					users.forEach((user) => {
+						if (user.val().userType === 'Student') {
+							database.ref('users/' + user.key + '/userAssignments/' + currentSubject + '/assignment_' + assignmentNumber).on('value', (assignment) => {
+								if (assignment.val().isDone) {
+									let uploadedFiles = [];
+									database.ref('users/' + user.key + '/userAssignments/' + currentSubject + '/assignment_' + assignmentNumber + '/assignmentFiles').on('value', (assignmentFiles) => {
+										assignmentFiles.forEach((assignmentFile) => {
+											uploadedFiles.push({ ...assignmentFile.val() });
+										});
+										studentList.push({
+											studentID: user.val().studentID,
+											submittedOn: assignment.val().submittedOn,
+											assignmentFiles: uploadedFiles || []
+										});
+									});
+									uploadedFiles = [];
+								}
+								this.setState({ studentList });
+							});
+						}
+					});
+					studentList = [];
 				});
 			}
 		});
@@ -202,6 +233,25 @@ class Assignment extends React.Component {
 		});
 	}
 
+	displayStudentList() {
+		return this.state.studentList.map((student, index) => {
+			console.log(student);
+			let uploadedAssignmentFiles = student.assignmentFiles.map((file, fileIndex) => {
+				return (
+					<File fileName={file.fileName} filePath={file.filePath} key={fileIndex} />
+				);
+			});
+			return (
+				<div className="student" key={index}>
+					<div>Student ID: {student.studentID}</div>
+					<div>Submitted On: {student.submittedOn}</div>
+					<div>Submitted Files</div>
+					{ uploadedAssignmentFiles }
+				</div>
+			);
+		});
+	}
+
 	submitAssignment() {
 		const { assignmentNumber } = this.state;
 		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
@@ -275,6 +325,12 @@ class Assignment extends React.Component {
 				<button className="submit-button" onClick={this.submitAssignment}>Submit Assignment</button>
 			</div> : null;
 
+		let studentList = this.state.userType === 'Teacher' ?
+			<div className="student-submission-list">
+				<div className="student-list-title">List of students who have submitted</div>
+				{ this.displayStudentList() }
+			</div> : null;
+
 		return (
 			<div className="assignment-page">
 				<Header subjectCode={subjectCode} subjectName={subjectName} />
@@ -287,6 +343,7 @@ class Assignment extends React.Component {
 					</div>
 					{ submission }
 				</div>
+				{ studentList }
 			</div>
 		);
 	}

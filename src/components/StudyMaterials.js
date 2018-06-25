@@ -1,6 +1,7 @@
 import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
+
 import LectureNotes from './LectureNotes';
 import References from './References';
 import Header from './Header';

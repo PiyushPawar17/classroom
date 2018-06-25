@@ -3,13 +3,13 @@ import ReactModal from 'react-modal';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { Line } from 'rc-progress';
-
 import { database, storage } from '../firebase/firebase';
 
 import ShortAssignment from './ShortAssignment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/Assignments.css'
+
 class Assignments extends React.Component {
 
 	constructor() {
@@ -148,7 +148,7 @@ class Assignments extends React.Component {
 					database.ref('users/' + user.key + '/userSubjects').once('value').then((userSubjects) => {
 						userSubjects.forEach((subject) => {
 							if (subject.val().dbSubjectKey === this.props.dbSubjectKey && user.val().userType === 'Student') {
-								database.ref('users/' + user.key + '/userAssignments/' + subjectName + '/assigment_' + assignmentNumber).set({
+								database.ref('users/' + user.key + '/userAssignments/' + subjectName + '/assignment_' + assignmentNumber).set({
 									isDone: false
 								});
 							}
