@@ -58,6 +58,10 @@
 	word-wrap: break-word;
 }
 
+.new-assignment-form > textarea:focus {
+	border: 1px solid #0060D7;
+}
+
 .new-assignment-title {
 	width: 850px;
 	height: 25px;

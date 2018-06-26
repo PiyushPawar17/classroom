@@ -38,14 +38,14 @@ class SignUp extends React.Component {
 				userUID: user.user.uid
 			});
 
-			firebase.auth().currentUser.sendEmailVerification().then(() => {
-				this.setState({ emailVerificationSnackbar: true } , () => {
-					setTimeout(() => {
-						this.setState({ emailVerificationSnackbar: false });
+			// firebase.auth().currentUser.sendEmailVerification().then(() => {
+			// 	this.setState({ emailVerificationSnackbar: true } , () => {
+			// 		setTimeout(() => {
+			// 			this.setState({ emailVerificationSnackbar: false });
 						history.push('/details');
-					}, 1500);
-				});
-			});
+			// 		}, 1500);
+			// 	});
+			// });
 		}).catch((error) => {
 			this.setState({
 				errorSnackbar: true,

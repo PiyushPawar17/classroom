@@ -95,7 +95,7 @@
 }
 
 .edit-announcement-form > textarea:focus {
-	border: 1.2px solid #0060D7;
+	border: 1px solid #0060D7;
 }
 
 .edit-announcement-title {

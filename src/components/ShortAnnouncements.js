@@ -29,9 +29,9 @@ class ShortAnnouncements extends React.Component {
 							allAnnouncements.push({ ...announcement.val() });
 						});
 						allAnnouncements.reverse();
-						this.setState({ allAnnouncements });
-						allAnnouncements = [];
 					});
+					this.setState({ allAnnouncements });
+					allAnnouncements = [];
 				}
 				currentIndex++;
 			});

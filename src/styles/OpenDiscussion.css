@@ -41,6 +41,10 @@
 	border: 1px solid grey;
 }
 
+.message-input:focus {
+	border: 1px solid #0060D7;
+}
+
 .message-send-button {
 	position: fixed;
 	bottom: 35px;

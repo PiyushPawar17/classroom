@@ -46,7 +46,6 @@
 
 .new-announcement-form > textarea {
 	border: 1px solid grey;
-	border-radius: 5px;
 	font-family: 'Nunito';
 	margin: 5px 15px;
 	padding: 5px;
@@ -55,7 +54,7 @@
 }
 
 .new-announcement-form > textarea:focus {
-	border: 1.2px solid #0060D7;
+	border: 1px solid #0060D7;
 }
 
 .new-announcement-title {
@@ -76,7 +75,6 @@
 	width: 25%;
 	height: 30px;
 	outline: none;
-	border-radius: 2px;
 	background-color: white;
 	transition-duration: 0.7s;
 }

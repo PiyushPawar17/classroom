@@ -32,6 +32,7 @@ class HomePage extends React.Component {
 
 	addSubjectHandler() {
 		let userType;
+		console.log(this.props.dbUserKey);
 		database.ref('users/' + this.props.dbUserKey).once('value').then((user) => {
 			userType = user.val().userType;
 			if (userType === 'Teacher')

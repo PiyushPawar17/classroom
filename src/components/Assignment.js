@@ -112,7 +112,7 @@ class Assignment extends React.Component {
 				let currentSubject = subjectCode + '_' + subjectName;
 				database.ref('users').on('value', (users) => {
 					users.forEach((user) => {
-						if (user.val().userType === 'Student') {
+						if (user.val().userType === 'Student' && user.child('/userAssignments/' + currentSubject).exists()) {
 							database.ref('users/' + user.key + '/userAssignments/' + currentSubject + '/assignment_' + assignmentNumber).on('value', (assignment) => {
 								if (assignment.val().isDone) {
 									let uploadedFiles = [];

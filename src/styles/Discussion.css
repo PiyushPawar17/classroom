@@ -67,6 +67,10 @@
 	border: 1px solid grey;
 }
 
+.comment-input:focus {
+	border: 1px solid #0060D7;
+}
+
 .comment-submit-button {
 	position: fixed;
 	bottom: 35px;
