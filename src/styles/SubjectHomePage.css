@@ -5,7 +5,6 @@
 .study-material {
 	cursor: pointer;
 	font-family: 'Nunito';
-	float: left;
 	padding: 5px;
 	width: 550px;
 	height: 100px;
@@ -16,11 +15,38 @@
 
 .study-material-title {
 	text-align: center;
-	font-size: 30px;
+	font-size: 25px;
 	border-bottom: 1px solid black;
 }
 
 .assignments-study-material {
+	float: left;
+	margin: 2px;
 	width: 560px;
 	display: inline-block;
+}
+
+.open-and-specific-discussions {
+	float: left;
+	margin: 2px;
+	font-family: 'Nunito';
+	display: inline-block;
+	width: 500px;
+}
+
+.open-discussion {
+	display: inline-block;
+	cursor: pointer;
+	font-family: 'Nunito';
+	padding: 5px;
+	height: 100px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px black;
+	word-wrap: break-word;
+}
+
+.open-discussion-title {
+	text-align: center;
+	font-size: 25px;
+	border-bottom: 1px solid black;
 }

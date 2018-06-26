@@ -25,8 +25,8 @@ class StudyMaterials extends React.Component {
 	}
 
 	render() {
-		let subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
-		let subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
+		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
+		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
 		return (
 			<div className="study-materials">
 				<Header subjectCode={subjectCode} subjectName={subjectName} />

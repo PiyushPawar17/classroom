@@ -29,8 +29,8 @@ class Discusson extends React.Component {
 	}
 
 	componentDidMount() {
-		let discussionIndex = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
-		let subIndex = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[7];
+		const discussionIndex = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
+		const subIndex = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[7];
 		let allComments = [];
 		database.ref('users/' + this.props.dbUserKey).on('value', (user) => {
 			this.setState({

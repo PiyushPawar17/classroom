@@ -21,6 +21,7 @@ class SubjectHomePage extends React.Component {
 		};
 
 		this.goToStudyMaterials = this.goToStudyMaterials.bind(this);
+		this.goToOpenDiscussion = this.goToOpenDiscussion.bind(this);
 	}
 
 	componentDidMount() {
@@ -48,18 +49,28 @@ class SubjectHomePage extends React.Component {
 		history.push('/studymaterials?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode);
 	}
 
+	goToOpenDiscussion() {
+		history.push('/opendiscussion?subjectName=' + this.state.subjectName + '&subjectCode=' + this.state.subjectCode + '&dbSubjectKey=' + this.state.dbSubjectKey);
+	}
+
 	render() {
 		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
 		return (
 			<div className="subject-home-page">
 				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
 				<ShortAnnouncements subIndex={subIndex} dbUserKey={this.props.dbUserKey} />
-				<Discussions
-					subIndex={subIndex}
-					dbUserKey={this.props.dbUserKey}
-					subjectName={this.state.subjectName}
-					subjectCode={this.state.subjectCode}
-				/>
+				<div className="open-and-specific-discussions">
+					<div className="open-discussion" onClick={this.goToOpenDiscussion}>
+						<div className="open-discussion-title">Open Discussion</div>
+						<p>Open discussion to clear small doubts or convey a message to everyone.</p>
+					</div>
+					<Discussions
+						subIndex={subIndex}
+						dbUserKey={this.props.dbUserKey}
+						subjectName={this.state.subjectName}
+						subjectCode={this.state.subjectCode}
+					/>
+				</div>
 				<div className="assignments-study-material">
 					<div className="study-material" onClick={this.goToStudyMaterials}>
 						<div className="study-material-title">Study Materials</div>

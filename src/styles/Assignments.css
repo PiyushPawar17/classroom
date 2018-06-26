@@ -1,7 +1,7 @@
 .assignments {
-	display: inline-block;
 	font-family: 'Nunito';
 	width: 550px;
+	max-height: 800px;
 	margin-top: 5px;
 	padding: 5px;
 	border: 1px solid black;

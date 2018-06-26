@@ -1,15 +1,14 @@
 .short-announcements {
-	width: 23%;
+	float: left;
+	width: 330px;
 	font-family: 'Nunito';
 	border: 1px solid black;
 	box-shadow: 1px 1px 1px black;
-	margin-left: 2px;
-	float: left;
+	margin: 2px;
+	padding: 2px;
 }
 
 .short-announcements-title {
-	position: relative;
-	left: 1%;
 	height: 35px;
 	width: 95%;
 	line-height: 35px;

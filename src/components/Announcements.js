@@ -32,7 +32,7 @@ class Announcements extends React.Component {
 
 	componentDidMount() {
 		let allAnnouncements = [];
-		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+		const subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
 
 		database.ref('users/' + this.props.dbUserKey + '/userSubjects').on('value', (subjects) => {
 			let currentIndex = 0;
@@ -88,12 +88,12 @@ class Announcements extends React.Component {
 	}
 
 	editAnnouncement(updatedAnnouncement, index) {
-		let announcementID = this.state.allAnnouncements[index].announcementID;
+		const announcementID = this.state.allAnnouncements[index].announcementID;
 		database.ref('subjects/' + this.state.dbSubjectKey + '/announcements/' + announcementID).set(updatedAnnouncement);
 	}
 
 	deleteAnnouncement(announcementIndex) {
-		let announcementID = this.state.allAnnouncements[announcementIndex].announcementID;
+		const announcementID = this.state.allAnnouncements[announcementIndex].announcementID;
 		database.ref('subjects/' + this.state.dbSubjectKey + '/announcements/' + announcementID).remove();
 	}
 

@@ -10,6 +10,7 @@ import Details from '../components/Details';
 import HomePage from '../components/HomePage';
 import SubjectHomePage from '../components/SubjectHomePage';
 import Announcements from '../components/Announcements';
+import OpenDiscussion from '../components/OpenDiscussion';
 import Discussion from '../components/Discussion';
 import StudyMaterials from '../components/StudyMaterials';
 import Assignment from '../components/Assignment';
@@ -45,6 +46,7 @@ const AppRouter = () => (
 			<Route path='/allsubjects' render={(props) => <AllSubjects {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/subjecthomepage' render={(props) => <SubjectHomePage {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/announcements' render={(props) => <Announcements {...props} dbUserKey={dbUserKey} />} />
+			<Route path='/opendiscussion' render={(props) => <OpenDiscussion {...props} dbUserKey={dbUserKey} /> } />
 			<Route path='/discussion' render={(props) => <Discussion {...props} dbUserKey={dbUserKey} />} />
 			<Route path='/studymaterials' render={(props) => <StudyMaterials {...props} dbUserKey={dbUserKey} /> } />
 			<Route path='/assignment' render={(props) => <Assignment {...props} dbUserKey={dbUserKey} /> } />
