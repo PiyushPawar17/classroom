@@ -13,6 +13,7 @@ class SignUp extends React.Component {
 		this.state = {
 			passwordMatchSnackbar: false,
 			errorSnackbar: false,
+			emailVerificationSnackbar: false,
 			errorMessage: ''
 		};
 
@@ -36,10 +37,15 @@ class SignUp extends React.Component {
 				userEmail: user.user.email,
 				userUID: user.user.uid
 			});
-			/*firebase.auth().currentUser.sendEmailVerification().then(() => {
-				console.log('Email Sent');
-			});*/
-			history.push('/details');
+
+			firebase.auth().currentUser.sendEmailVerification().then(() => {
+				this.setState({ emailVerificationSnackbar: true } , () => {
+					setTimeout(() => {
+						this.setState({ emailVerificationSnackbar: false });
+						history.push('/details');
+					}, 1500);
+				});
+			});
 		}).catch((error) => {
 			this.setState({
 				errorSnackbar: true,
@@ -60,6 +66,7 @@ class SignUp extends React.Component {
 			<div className="sign-up" onSubmit={this.signUp}>
 				<Notification isActive={this.state.passwordMatchSnackbar} message="Password does not match" title="Error" />
 				<Notification isActive={this.state.errorSnackbar} message={this.state.errorMessage} title="Error" />
+				<Notification isActive={this.state.emailVerificationSnackbar} message="Email verification sent. Check your email." />
 				<div className="sign-up-title">Sign Up</div>
 				<form className="sign-up-form">
 					<div>Email</div>

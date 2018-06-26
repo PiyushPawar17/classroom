@@ -21,9 +21,14 @@ class SignIn extends React.Component {
 	signIn(event) {
 		event.preventDefault();
 		firebase.auth().signInWithEmailAndPassword(this.refs.email.value, this.refs.password.value).then((user) => {
-			setTimeout(() => {
-				history.push('/homepage');
-			}, 500);
+			if (user.user.emailVerified) {
+				setTimeout(() => {
+					history.push('/homepage');
+				}, 500);
+			}
+			else {
+				history.push('/verifyuser?email=' + user.user.email);
+			}
 		}).catch((error) => {
 			this.setState({
 				errorSnackbar: true,

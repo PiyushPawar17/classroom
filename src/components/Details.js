@@ -72,7 +72,7 @@ class Details extends React.Component {
 					branch: this.state.branch
 				});
 			}
-			history.push('/homepage');
+			history.push('/');
 		});
 	}
 

@@ -5,6 +5,7 @@ import { database, firebase } from '../firebase/firebase';
 
 import Classroom from '../components/Classroom';
 import SignIn from '../components/SignIn';
+import VerifyUser from '../components/VerifyUser';
 import SignUp from '../components/SignUp';
 import Details from '../components/Details';
 import HomePage from '../components/HomePage';
@@ -40,6 +41,7 @@ const AppRouter = () => (
 		<Switch>
 			<Route exact path='/' component={Classroom} />
 			<Route path='/signin' component={SignIn} />
+			<Route path='/verifyuser' component={VerifyUser} />
 			<Route path='/signup' component={SignUp} />
 			<Route path='/details' component={Details} />
 			<Route path='/homepage' render={(props) => <HomePage {...props} dbUserKey={dbUserKey} />} />

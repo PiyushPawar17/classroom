@@ -54,7 +54,7 @@ class SubjectHomePage extends React.Component {
 	}
 
 	render() {
-		let subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
+		const subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
 		return (
 			<div className="subject-home-page">
 				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />

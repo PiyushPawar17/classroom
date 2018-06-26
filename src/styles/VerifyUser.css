@@ -1,0 +1,47 @@
+.verify-user {
+	font-family: 'Nunito';
+	margin: 5px;
+	padding: 10px;
+}
+
+.ooops {
+	margin: 15px;
+	font-size: 55px;
+	text-align: center;
+	color: grey;
+}
+
+.verify-user-info {
+	font-size: 17px;
+	margin: 10px;
+}
+
+.send-verification-button, .cancel-verification-button {
+	cursor: pointer;
+	width: 180px;
+	height: 35px;
+	margin: 10px;
+	padding: 5px;
+	background-color: transparent;
+	transition-duration: 0.7s;
+}
+
+.send-verification-button {
+	border: 1px solid #9635D8;
+	color: #9635D8;
+}
+
+.send-verification-button:hover {
+	background-color: #9635D8;
+	color: white;
+}
+
+.cancel-verification-button {
+	border: 1px solid #DA1111;
+	color: #DA1111;
+}
+
+.cancel-verification-button:hover {
+	background-color: #DA1111;
+	color: white;
+}
