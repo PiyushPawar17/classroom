@@ -1,10 +1,16 @@
+#announcements-page {
+	color: white;
+}
+
 .announcements {
-	background-color: #FCFCFC;
+	position: absolute;
+	color: white;
+	width: 1428px;
 }
 
 .new-announcement-button {
 	position: fixed;
-	right: 10px;
+	right: 20px;
 	bottom: 10px;
 	cursor: pointer;
 	margin: 15px;
@@ -13,7 +19,7 @@
 	border: none;
 	outline: none;
 	font-size: 25px;
-	background-color: white;
+	background-color: transparent;
 	color: #0AA100;
 	border: 1.5px solid #0AA100;
 	border-radius: 50%;
@@ -32,7 +38,7 @@
 	transform: translateY(10%);
 	background-color: white;
 	outline: none;
-	border: 1px solid black;
+	border: 1px solid white;
 }
 
 .new-announcement-form {

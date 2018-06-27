@@ -1,7 +1,9 @@
 .verify-user {
+	position: absolute;
 	font-family: 'Nunito';
 	margin: 5px;
 	padding: 10px;
+	color: white;
 }
 
 .ooops {

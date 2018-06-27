@@ -1,5 +1,10 @@
-.subject-home-page {
-	background-color: #FCFCFC;
+#subject-home-page {
+	color: white;
+}
+
+.subject-home {
+	position: absolute;
+	width: 1428px;
 }
 
 .study-material {
@@ -8,15 +13,15 @@
 	padding: 5px;
 	width: 550px;
 	height: 100px;
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	word-wrap: break-word;
 }
 
 .study-material-title {
 	text-align: center;
 	font-size: 25px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 }
 
 .assignments-study-material {
@@ -40,13 +45,13 @@
 	font-family: 'Nunito';
 	padding: 5px;
 	height: 100px;
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	word-wrap: break-word;
 }
 
 .open-discussion-title {
 	text-align: center;
 	font-size: 25px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
 
+import Background from './Background';
 import Header from './Header';
 
 import '../styles/Discussion.css';
@@ -110,14 +111,17 @@ class Discusson extends React.Component {
 				<button className="comment-submit-button" onClick={this.addComment}>Comment</button>
 			</div> : <div className="comment-disabled">Discussion Closed</div>;
 		return (
-			<div className="discussion">
-				<Header subjectCode={subjectCode} subjectName={subjectName} />
-				<div className="discussion-title">{this.state.discussionTitle}</div>
-				<div className="discussion-creator">Created by: {this.state.createdBy}</div>
-				<div className="discussion-created-on">Created on: {this.state.createdOn}</div>
-				{ closeDiscussionButton }
-				{ this.displayComments() }
-				{ commentBox }
+			<div id="discussion-page">
+				<Background />
+				<div className="discussion">
+					<Header subjectCode={subjectCode} subjectName={subjectName} />
+					<div className="discussion-title">{this.state.discussionTitle}</div>
+					<div className="discussion-creator">Created by: {this.state.createdBy}</div>
+					<div className="discussion-created-on">Created on: {this.state.createdOn}</div>
+					{ closeDiscussionButton }
+					{ this.displayComments() }
+					{ commentBox }
+				</div>
 			</div>
 		);
 	}

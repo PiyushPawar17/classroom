@@ -1,9 +1,18 @@
+#assignment-page {
+	color: white;
+}
+
+.assignment-page-div {
+	position: absolute;
+	width: 1428px;
+}
+
 .assignment {
 	margin: 10px;
 	padding: 5px;
 	font-family: 'Nunito';
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	min-height: 200px;
 	word-wrap: break-word;
 	white-space: pre-wrap;
@@ -17,7 +26,7 @@
 .assignment-title {
 	padding: 5px;
 	font-size: 25px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 	word-wrap: break-word;
 }
 
@@ -42,7 +51,7 @@
 	width: 500px;
 	line-height: 50px;
 	padding-left: 5px;
-	border: 1px solid black;
+	border: 1px solid white;
 	margin: 5px;
 	word-wrap: break-word;
 }
@@ -72,7 +81,7 @@
 .submission-date {
 	margin: 5px;
 	font-size: 13px;
-	color: grey;
+	color: #AAAAAA;
 }
 
 .assignment > button {
@@ -98,7 +107,7 @@
 }
 
 .submission-title {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 	font-size: 17px;
 	margin: 5px;
 }
@@ -148,12 +157,8 @@
 
 .student {
 	font-size: 15px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 	width: 45%;
 	margin: 10px;
 	padding: 10px;
-}
-
-.no-shadow {
-	box-shadow: none;
 }

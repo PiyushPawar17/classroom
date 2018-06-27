@@ -2,9 +2,12 @@ import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
 
+import Background from './Background';
+import Header from './Header';
 import LectureNotes from './LectureNotes';
 import References from './References';
-import Header from './Header';
+
+import '../styles/StudyMaterials.css';
 
 class StudyMaterials extends React.Component {
 
@@ -28,10 +31,13 @@ class StudyMaterials extends React.Component {
 		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
 		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
 		return (
-			<div className="study-materials">
-				<Header subjectCode={subjectCode} subjectName={subjectName} />
-				<LectureNotes isTeacher={this.state.isTeacher} subjectCode={subjectCode} subjectName={subjectName} />
-				<References isTeacher={this.state.isTeacher} subjectCode={subjectCode} subjectName={subjectName} />
+			<div id="study-materials-page">
+				<Background />
+				<div className="study-materials">
+					<Header subjectCode={subjectCode} subjectName={subjectName} />
+					<LectureNotes isTeacher={this.state.isTeacher} subjectCode={subjectCode} subjectName={subjectName} />
+					<References isTeacher={this.state.isTeacher} subjectCode={subjectCode} subjectName={subjectName} />
+				</div>
 			</div>
 		);
 	}

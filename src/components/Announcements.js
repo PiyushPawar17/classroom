@@ -3,8 +3,9 @@ import ReactModal from 'react-modal';
 import { database } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
-import Announcement from './Announcement';
+import Background from './Background';
 import Header from './Header';
+import Announcement from './Announcement';
 
 import '../styles/Announcements.css';
 
@@ -115,22 +116,25 @@ class Announcements extends React.Component {
 	render() {
 		let addAnnouncements = this.state.userType === 'Teacher' ? <button onClick={this.handleOpenModal} className="new-announcement-button">+</button> : <div></div>;
 		return (
-			<div className="announcements">
-				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
-				{ this.displayAnnouncements() }
-				<div className="new-announcement-div">
-					{ addAnnouncements }
-					<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false} className="new-announcement-modal">
-						<form className="new-announcement-form" onSubmit={this.addAnnouncement}>
-							<div>Announcement Title</div>
-							<textarea type="text" className="new-announcement-title" ref="title"></textarea>
-							<div>Announcement Description</div>
-							<textarea type="text" className="new-announcement-description" ref="description"></textarea>
-							<br />
-							<input type="submit" value="Add Announcement" className="add-announcement-button" />
-							<button onClick={this.handleCloseModal} className="close-modal-button">Cancel</button>
-						</form>
-					</ReactModal>
+			<div id="announcements-page">
+				<Background />
+				<div className="announcements">
+					<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
+					{ this.displayAnnouncements() }
+					<div className="new-announcement-div">
+						{ addAnnouncements }
+						<ReactModal isOpen={this.state.showModal} contentLabel="Add Announcement" ariaHideApp={false} className="new-announcement-modal">
+							<form className="new-announcement-form" onSubmit={this.addAnnouncement}>
+								<div>Announcement Title</div>
+								<textarea type="text" className="new-announcement-title" ref="title"></textarea>
+								<div>Announcement Description</div>
+								<textarea type="text" className="new-announcement-description" ref="description"></textarea>
+								<br />
+								<input type="submit" value="Add Announcement" className="add-announcement-button" />
+								<button onClick={this.handleCloseModal} className="close-modal-button">Cancel</button>
+							</form>
+						</ReactModal>
+					</div>
 				</div>
 			</div>
 		);

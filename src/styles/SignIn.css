@@ -1,19 +1,27 @@
+#sign-in-page {
+	height: 732px;
+}
+
 .sign-in {
+	position: absolute;
 	width: 500px;
 	height: 300px;
-	border: 1px solid black;
+	border: 1px solid white;
 	padding: 15px;
-	margin: 100px auto;
+	margin-left: 450px;
+	margin-top: 150px;
 	font-family: 'Nunito';
+	color: white;
 }
 
 .sign-in-title {
 	text-align: center;
 	font-size: 35px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 }
 
 .sign-in-form {
+	position: absolute;
 	margin: 15px;
 	padding: 5px;
 }

@@ -1,5 +1,12 @@
-.open-discussion-page {
+#open-discussion-page {
+	width: 1425px;
+	color: white;
 	font-family: 'Nunito';
+}
+
+.open-discussion-div {
+	position: absolute;
+	width: 1428px;
 }
 
 .open-discussion-page-title {
@@ -8,8 +15,8 @@
 }
 
 .message {
-	border-left: 3px solid #30DAED;
-	background-color: #F0F0F0;
+	border-bottom: 1px solid #30DAED;
+	color: white;
 	padding: 5px;
 	margin: 15px 5px;
 }
@@ -38,11 +45,15 @@
 	height: 30px;
 	line-height: 30px;
 	width: 88%;
-	border: 1px solid grey;
+	border: 1px solid white;
+	background-color: transparent;
+	color: white;
+	transition-duration: 0.2s;
 }
 
 .message-input:focus {
-	border: 1px solid #0060D7;
+	border: none;
+	box-shadow: 0px 0px 10px #8831DA;
 }
 
 .message-send-button {

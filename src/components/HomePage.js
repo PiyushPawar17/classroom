@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import { database, firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
+import Background from './Background';
 import UserSubjects from './UserSubjects';
 
 import '../styles/HomePage.css';
@@ -77,27 +78,30 @@ class HomePage extends React.Component {
 
 	render() {
 		return (
-			<div className="home-page">
-				<div className="home-page-header">
-					<span className="home-page-header-title">Your Subjects</span>
-					<button className="logout-button" onClick={this.logout}>Logout</button>
+			<div id="home-page">
+				<Background />
+				<div className="home">
+					<div className="home-page-header">
+						<span className="home-page-header-title">Your Subjects</span>
+						<button className="logout-button" onClick={this.logout}>Logout</button>
+					</div>
+					<UserSubjects dbUserKey={this.props.dbUserKey} />
+					<div className="add-subject-div" onClick={this.addSubjectHandler}>
+						<div className="add-subject-div-button">+</div>
+						<div className="add-subject-label">Add Subject</div>
+					</div>
+					<ReactModal isOpen={this.state.addSubjectModal} contentLabel="Add Announcement" ariaHideApp={false} className="add-subject-modal">
+						<form className="add-subject-form" onSubmit={this.addSubject}>
+							<div>Subject Name</div>
+							<input type="text" className="new-subject-name" ref="subjectName" required />
+							<div>Subject Code</div>
+							<input type="text" className="new-subject-code" ref="subjectCode" required />
+							<br />
+							<input type="submit" value="Add Subject" className="add-subject-button" />
+							<button onClick={this.handleCloseModal} className="close-modal-button">Cancel</button>
+						</form>
+					</ReactModal>
 				</div>
-				<UserSubjects dbUserKey={this.props.dbUserKey} />
-				<div className="add-subject-div" onClick={this.addSubjectHandler}>
-					<div className="add-subject-div-button">+</div>
-					<div className="add-subject-label">Add Subject</div>
-				</div>
-				<ReactModal isOpen={this.state.addSubjectModal} contentLabel="Add Announcement" ariaHideApp={false} className="add-subject-modal">
-					<form className="add-subject-form" onSubmit={this.addSubject}>
-						<div>Subject Name</div>
-						<input type="text" className="new-subject-name" ref="subjectName" required />
-						<div>Subject Code</div>
-						<input type="text" className="new-subject-code" ref="subjectCode" required />
-						<br />
-						<input type="submit" value="Add Subject" className="add-subject-button" />
-						<button onClick={this.handleCloseModal} className="close-modal-button">Cancel</button>
-					</form>
-				</ReactModal>
 			</div>
 		);
 	}

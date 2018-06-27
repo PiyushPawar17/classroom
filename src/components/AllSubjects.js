@@ -2,7 +2,10 @@ import React from 'react';
 import { database, firebase } from '../firebase/firebase';
 import { history } from '../routes/AppRouter';
 
+import Background from './Background';
 import Subject from './Subject';
+
+import '../styles/AllSubjects.css';
 
 class AllSubjects extends React.Component {
 
@@ -93,13 +96,16 @@ class AllSubjects extends React.Component {
 
 	render() {
 		return (
-			<div className="all-subjects">
-				<div className="home-page-header">
-					<button className="back-button" onClick={this.goBack}>Back</button>
-					<button className="home-button" onClick={this.goHome}>Home</button>
-					<button className="logout-button" onClick={this.logout}>Logout</button>
+			<div id="all-subjects-page">
+				<Background />
+				<div className="all-subjects">
+					<div className="home-page-header">
+						<button className="back-button" onClick={this.goBack}>Back</button>
+						<button className="home-button" onClick={this.goHome}>Home</button>
+						<button className="logout-button" onClick={this.logout}>Logout</button>
+					</div>
+					{ this.displayAllSubjects() }
 				</div>
-				{ this.displayAllSubjects() }
 			</div>
 		);
 	}

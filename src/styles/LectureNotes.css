@@ -1,8 +1,8 @@
 .lecture-notes {
 	float: left;
 	margin: 10px;
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	width: 650px;
 	font-family: 'Nunito';
 }
@@ -37,7 +37,7 @@
 	font-family: 'Nunito';
 	outline: none;
 	margin: 250px auto;
-	border: 1px solid black;
+	border: 1px solid white;
 	background-color: white;
 	width: 500px;
 	height: 90px;
@@ -88,7 +88,7 @@
 	font-family: 'Nunito';
 	font-size: 15px;
 	padding: 5px;
-	background-color: white;
+	background-color: transparent;
 	color: #ED2929;
 	border: 1px solid #ED2929;
 	transition-duration: 0.7s;
@@ -107,7 +107,7 @@
 	font-size: 15px;
 	padding: 5px;
 	width: 100px;
-	background-color: white;
+	background-color: transparent;
 	color: #00BC1E;
 	border: 1px solid #00BC1E;
 	transition-duration: 0.7s;

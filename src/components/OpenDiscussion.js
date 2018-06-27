@@ -2,6 +2,7 @@ import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
 
+import Background from './Background';
 import Header from './Header';
 
 import '../styles/OpenDiscussion.css';
@@ -63,14 +64,17 @@ class OpenDiscussion extends React.Component {
 		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[1];
 		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
 		return (
-			<div className="open-discussion-page">
-				<Header subjectCode={subjectCode} subjectName={subjectName} />
-				<div className="open-discussion-page-title">Open Discussion</div>
-				{ this.displayMessages() }
-				<div>
-					<div className="extra-div"></div>
-					<textarea type="text" className="message-input" ref="message"></textarea>
-					<button className="message-send-button" onClick={this.sendMessage}>Send Message</button>
+			<div id="open-discussion-page">
+				<Background />
+				<div className="open-discussion-div">
+					<Header subjectCode={subjectCode} subjectName={subjectName} />
+					<div className="open-discussion-page-title">Open Discussion</div>
+					{ this.displayMessages() }
+					<div>
+						<div className="extra-div"></div>
+						<textarea type="text" className="message-input" ref="message"></textarea>
+						<button className="message-send-button" onClick={this.sendMessage}>Send Message</button>
+					</div>
 				</div>
 			</div>
 		);

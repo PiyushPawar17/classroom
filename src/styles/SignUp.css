@@ -1,16 +1,23 @@
+#sign-up-page {
+	height: 732px;
+}
+
 .sign-up {
+	position: absolute;
 	width: 500px;
 	height: 400px;
-	border: 1px solid black;
+	border: 1px solid white;
+	color: white;
 	padding: 15px;
-	margin: 100px auto;
+	margin-left: 450px;
+	margin-top: 150px;
 	font-family: 'Nunito';
 }
 
 .sign-up-title {
 	text-align: center;
 	font-size: 35px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 }
 
 .sign-up-form {

@@ -2,8 +2,8 @@
 	float: left;
 	width: 330px;
 	font-family: 'Nunito';
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	margin: 2px;
 	padding: 2px;
 }
@@ -14,7 +14,7 @@
 	line-height: 35px;
 	padding: 5px;
 	font-size: 20px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 	text-align: center;
 }
 
@@ -22,9 +22,8 @@
 	height: 30px;
 	margin: 4px;
 	padding: 5px;
-	border-left: 2px solid blue;
+	border-bottom: 1px solid blue;
 	word-wrap: break-word;
-	background-color: #F0F0F0;
 	line-height: 30px;
 }
 
@@ -37,11 +36,11 @@
 	cursor: pointer;
 }
 
-.more-announcement-button a {
-	color: black;
+.more-announcement-button {
+	color: white;
 	text-decoration: none;
 }
 
-.more-announcement-button a:hover {
+.more-announcement-button:hover {
 	text-decoration: underline;
 }

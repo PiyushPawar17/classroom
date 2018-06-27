@@ -1,17 +1,18 @@
 .announcement {
 	clear: both;
-	margin: 10px;
-	box-shadow: 1px 1px 1px #0060D7;
+	width: 1400px;
+	border-bottom: 1px solid #0060D7;
+	margin-bottom: 5px;
+	margin-left: 2px;
 }
 
 .announcement-title {
-	background-color: #0060D7;
 	color: white;
-	text-align: center;
 	font-family: 'Nunito';
-	font-size: 17px;
+	font-size: 22px;
+	text-decoration: underline;
 	margin: 5px 0px;
-	padding: 5px;
+	padding: 5px 10px;
 	word-wrap: break-word;
 }
 
@@ -27,11 +28,11 @@
 .edit-announcement-button {
 	cursor: pointer;
 	margin-bottom: 5px;
-	margin-right: 10px;
+	margin: 10px;
 	border: none;
 	outline: none;
 	font-family: 'Nunito';
-	background-color: white;
+	background-color: transparent;
 	color: #0060D7;
 	border: 1px solid #0060D7;
 	border-radius: 2px;
@@ -51,7 +52,7 @@
 	border: none;
 	outline: none;
 	font-family: 'Nunito';
-	background-color: white;
+	background-color: transparent;
 	color: #DC0000;
 	border: 1px solid #DC0000;
 	border-radius: 2px;

@@ -1,8 +1,8 @@
 .references {
 	float: left;
 	margin: 10px;
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	width: 650px;
 	font-family: 'Nunito';
 }
@@ -37,7 +37,7 @@
 	font-family: 'Nunito';
 	outline: none;
 	margin: 250px auto;
-	border: 1px solid black;
+	border: 1px solid white;
 	background-color: white;
 	width: 500px;
 	height: 90px;

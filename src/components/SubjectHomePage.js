@@ -2,6 +2,7 @@ import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database } from '../firebase/firebase';
 
+import Background from './Background';
 import Header from './Header';
 import ShortAnnouncements from './ShortAnnouncements';
 import Discussions from './Discussions';
@@ -56,32 +57,35 @@ class SubjectHomePage extends React.Component {
 	render() {
 		const subIndex = history.location.search.slice(1, history.location.search.length).split('=')[1];
 		return (
-			<div className="subject-home-page">
-				<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
-				<ShortAnnouncements subIndex={subIndex} dbUserKey={this.props.dbUserKey} />
-				<div className="open-and-specific-discussions">
-					<div className="open-discussion" onClick={this.goToOpenDiscussion}>
-						<div className="open-discussion-title">Open Discussion</div>
-						<p>Open discussion to clear small doubts or convey a message to everyone.</p>
+			<div id="subject-home-page">
+				<Background />
+				<div className="subject-home">
+					<Header subjectCode={this.state.subjectCode} subjectName={this.state.subjectName} />
+					<ShortAnnouncements subIndex={subIndex} dbUserKey={this.props.dbUserKey} />
+					<div className="open-and-specific-discussions">
+						<div className="open-discussion" onClick={this.goToOpenDiscussion}>
+							<div className="open-discussion-title">Open Discussion</div>
+							<p>Open discussion to clear small doubts or convey a message to everyone.</p>
+						</div>
+						<Discussions
+							subIndex={subIndex}
+							dbUserKey={this.props.dbUserKey}
+							subjectName={this.state.subjectName}
+							subjectCode={this.state.subjectCode}
+						/>
 					</div>
-					<Discussions
-						subIndex={subIndex}
-						dbUserKey={this.props.dbUserKey}
-						subjectName={this.state.subjectName}
-						subjectCode={this.state.subjectCode}
-					/>
-				</div>
-				<div className="assignments-study-material">
-					<div className="study-material" onClick={this.goToStudyMaterials}>
-						<div className="study-material-title">Study Materials</div>
-						<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
+					<div className="assignments-study-material">
+						<div className="study-material" onClick={this.goToStudyMaterials}>
+							<div className="study-material-title">Study Materials</div>
+							<p>Contains lecture slides uploaded by the instructor and other reference materials.</p>
+						</div>
+						<Assignments
+							dbUserKey={this.props.dbUserKey}
+							dbSubjectKey={this.state.dbSubjectKey}
+							subjectCode={this.state.subjectCode}
+							subjectName={this.state.subjectName}
+						/>
 					</div>
-					<Assignments
-						dbUserKey={this.props.dbUserKey}
-						dbSubjectKey={this.state.dbSubjectKey}
-						subjectCode={this.state.subjectCode}
-						subjectName={this.state.subjectName}
-					/>
 				</div>
 			</div>
 		);

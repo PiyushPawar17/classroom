@@ -2,6 +2,8 @@ import React from 'react';
 import { history } from '../routes/AppRouter';
 import { database, firebase } from '../firebase/firebase';
 
+import Background from './Background';
+
 import '../styles/Details.css';
 
 class Details extends React.Component {
@@ -93,20 +95,23 @@ class Details extends React.Component {
 		const student = this.state.user === 'Student' ? this.renderStudent() : <div></div>;
 
 		return (
-			<div className="details" onSubmit={this.submitDetails}>
-				<div className="details-title">Details</div>
-				<form className="details-form">
-					<div>Name</div>
-					<input type="text" className="details-name" ref="userName" required />
-					<div>You are a...</div>
-					<div>
-						<label><input type="radio" name="user" value="Teacher" onClick={() => this.setUser('Teacher')}/> Teacher </label>
-						<label><input type="radio" name="user" value="Student" onClick={() => this.setUser('Student')} /> Student </label>
-					</div>
-					{ student }
-					<input type="submit" className="details-submit" />
-					<input type="button" value="Cancel" className="details-cancel-button" onClick={this.cancelSignUp} />
-				</form>
+			<div id="details-page">
+				<Background />
+				<div className="details" onSubmit={this.submitDetails}>
+					<div className="details-title">Details</div>
+					<form className="details-form">
+						<div>Name</div>
+						<input type="text" className="details-name" ref="userName" required />
+						<div>You are a...</div>
+						<div>
+							<label><input type="radio" name="user" value="Teacher" onClick={() => this.setUser('Teacher')}/> Teacher </label>
+							<label><input type="radio" name="user" value="Student" onClick={() => this.setUser('Student')} /> Student </label>
+						</div>
+						{ student }
+						<input type="submit" className="details-submit" />
+						<input type="button" value="Cancel" className="details-cancel-button" onClick={this.cancelSignUp} />
+					</form>
+				</div>
 			</div>
 		);
 	}

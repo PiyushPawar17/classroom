@@ -1,4 +1,7 @@
 .discussion {
+	width: 1428px;
+	position: absolute;
+	color: white;
 	font-family: 'Nunito';
 }
 
@@ -29,8 +32,8 @@
 }
 
 .comments {
-	border-left: 3px solid #B000DE;
-	background-color: #F0F0F0;
+	border-bottom: 1px solid #B000DE;
+	color: white;
 	margin: 15px 5px;
 	padding: 5px;
 	font-family: 'Nunito';
@@ -64,11 +67,15 @@
 	height: 30px;
 	line-height: 30px;
 	width: 88%;
-	border: 1px solid grey;
+	border: 1px solid white;
+	background-color: transparent;
+	color: white;
+	transition-duration: 0.2s;
 }
 
 .comment-input:focus {
-	border: 1px solid #0060D7;
+	border: none;
+	box-shadow: 0px 0px 10px #0060D7;
 }
 
 .comment-submit-button {

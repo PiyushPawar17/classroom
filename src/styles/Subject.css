@@ -1,5 +1,6 @@
 .subject {
-	border: 1px solid black;
+	border: 1px solid white;
+	color: white;
 	width: 300px;
 	height: 200px;
 	font-family: 'Nunito';
@@ -7,12 +8,12 @@
 	margin: 5px;
 	float: left;
 	cursor: pointer;
-	box-shadow: 1px 1px 1px black;
+	box-shadow: 1px 1px 1px white;
 }
 
 .subject-info {
 	height: 75%;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 }
 
 .subject-code, .subject-name {

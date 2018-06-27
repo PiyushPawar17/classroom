@@ -1,3 +1,12 @@
+#home-page {
+	height: 732px;
+}
+
+.home {
+	position: absolute;
+	width: 1428px;
+}
+
 .home-page-header {
 	text-align: center;
 	font-family: 'Nunito';
@@ -22,7 +31,7 @@
 }
 
 .add-subject-div {
-	border: 1px solid black;
+	border: 1px solid white;
 	width: 300px;
 	height: 200px;
 	font-family: 'Nunito';
@@ -30,7 +39,7 @@
 	margin: 5px;
 	float: left;
 	cursor: pointer;
-	box-shadow: 1px 1px 1px black;
+	box-shadow: 1px 1px 1px white;
 }
 
 .add-subject-div-button {
@@ -39,12 +48,14 @@
 	line-height: 150px;
 	height: 75%;
 	opacity: 0.8;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
+	color: white;
 }
 
 .add-subject-label {
 	text-align: center;
 	padding: 15px 5px;
+	color: white;
 }
 
 .add-subject-modal {
@@ -54,7 +65,7 @@
 	transform: translateY(50%);
 	background-color: white;
 	outline: none;
-	border: 1px solid black;
+	border: 1px solid white;
 }
 
 .add-subject-form {

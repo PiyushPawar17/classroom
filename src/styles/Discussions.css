@@ -2,8 +2,8 @@
 	font-family: 'Nunito';
 	max-height: 800px;
 	margin-top: 5px;
-	border: 1px solid black;
-	box-shadow: 1px 1px 1px black;
+	border: 1px solid white;
+	box-shadow: 1px 1px 1px white;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
@@ -17,7 +17,7 @@
 	line-height: 35px;
 	padding: 5px;
 	font-size: 25px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
 }
 
 .new-discussion-button {
@@ -45,7 +45,7 @@
 	margin: auto;
 	padding: 15px;
 	background-color: white;
-	border: 1px solid black;
+	border: 1px solid white;
 	outline: none;
 	transform: translateY(90%);
 }

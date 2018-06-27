@@ -4,6 +4,7 @@ import { Line } from 'rc-progress';
 import { history } from '../routes/AppRouter';
 import { database, storage } from '../firebase/firebase';
 
+import Background from './Background';
 import Header from './Header';
 import File from './File';
 
@@ -332,18 +333,21 @@ class Assignment extends React.Component {
 			</div> : null;
 
 		return (
-			<div className="assignment-page">
-				<Header subjectCode={subjectCode} subjectName={subjectName} />
-				<div className="assignment">
-					<div className="assignment-info">
-						<div className="assignment-title">Assignment {this.state.assignmentNumber}</div>
-						<pre className="assignment-description">{this.state.assignmentDescription}</pre>
-						{ this.displayFiles() }
-						<div className="submission-date">Due: {this.state.submissionDate}</div>
+			<div id="assignment-page">
+				<Background />
+				<div className="assignment-page-div">
+					<Header subjectCode={subjectCode} subjectName={subjectName} />
+					<div className="assignment">
+						<div className="assignment-info">
+							<div className="assignment-title">Assignment {this.state.assignmentNumber}</div>
+							<pre className="assignment-description">{this.state.assignmentDescription}</pre>
+							{ this.displayFiles() }
+							<div className="submission-date">Due: {this.state.submissionDate}</div>
+						</div>
+						{ submission }
 					</div>
-					{ submission }
+					{ studentList }
 				</div>
-				{ studentList }
 			</div>
 		);
 	}
