@@ -17,6 +17,7 @@ function createWindow() {
 		protocol: 'file:',
 		slashes: true
 	});
+	mainWindow.setMenu(null);
 	mainWindow.loadURL(startUrl);
 	mainWindow.on('closed', () => mainWindow = null);
 }
