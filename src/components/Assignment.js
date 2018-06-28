@@ -159,12 +159,12 @@ class Assignment extends React.Component {
 		const subjectName = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[3];
 		const subjectCode = history.location.search.slice(1, history.location.search.length).split(/[=&]+/)[5];
 
-		let metadata;
+		let path;
 		this.setState({ isUploading: true });
 		storage.ref('assignment_files/' + subjectCode + '_' + subjectName + '/assignment_' + assignmentNumber + '/student_submissions/' + studentID + '/' + file.name).put(file).on('state_changed',
 			(fileSnapshot) => {
 				let percentage = (fileSnapshot.bytesTransferred / fileSnapshot.totalBytes) * 100;
-				metadata = fileSnapshot.metadata;
+				path = fileSnapshot.ref.location.path;
 				this.setState({ percentage });
 			},
 			(error) => {
@@ -181,8 +181,8 @@ class Assignment extends React.Component {
 				}, 1000);
 
 				database.ref('users/' + this.props.dbUserKey + '/userAssignments/' + subjectCode + '_' + subjectName + '/assignment_' + assignmentNumber + '/assignmentFiles').push({
-					filePath: metadata.fullPath,
-					fileName: metadata.name
+					filePath: path,
+					fileName: file.name
 				});
 			}
 		);

@@ -91,14 +91,14 @@ class Assignments extends React.Component {
 		const { subjectName, subjectCode } = this.props;
 		const assignmentNumber = this.refs.title.value;
 		let uploadedFiles = [...this.state.uploadedFiles];
-		let metadata;
+		let path;
 
 		this.setState({ isUploading: true });
 
 		storage.ref('assignment_files/' + subjectCode + '_' + subjectName + '/assignment_' + assignmentNumber + '/' + file.name).put(file).on('state_changed',
 			(fileSnapshot) => {
 				let percentage = (fileSnapshot.bytesTransferred / fileSnapshot.totalBytes) * 100;
-				metadata = fileSnapshot.metadata;
+				path = fileSnapshot.ref.location.path;
 				this.setState({ percentage });
 			},
 			(error) => {
@@ -115,8 +115,8 @@ class Assignments extends React.Component {
 				}, 1000);
 
 				uploadedFiles.push({
-					filePath: metadata.fullPath,
-					fileName: metadata.name
+					filePath: path,
+					fileName: file.name
 				});
 
 				this.setState({ uploadedFiles });

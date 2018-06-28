@@ -19,7 +19,7 @@
 }
 
 .short-announcement {
-	height: 30px;
+	min-height: 30px;
 	margin: 4px;
 	padding: 5px;
 	border-bottom: 1px solid blue;

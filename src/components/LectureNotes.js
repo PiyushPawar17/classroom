@@ -69,12 +69,12 @@ class LectureNotes extends React.Component {
 	uploadFile() {
 		const { file } = this.state;
 		const { subjectCode, subjectName } = this.props;
-		let metadata;
+		let path;
 		this.setState({ isUploading: true });
 		storage.ref('lecture_notes/' + this.props.subjectCode + '_' + this.props.subjectName + '/' + file.name).put(file).on('state_changed',
 			(fileSnapshot) => {
 				let percentage = (fileSnapshot.bytesTransferred / fileSnapshot.totalBytes) * 100;
-				metadata = fileSnapshot.metadata;
+				path = fileSnapshot.ref.location.path;
 				this.setState({ percentage });
 			},
 			(error) => {
@@ -95,8 +95,8 @@ class LectureNotes extends React.Component {
 					subjects.forEach((subject) => {
 						if (subject.val().subjectCode === subjectCode && subject.val().subjectName === subjectName) {
 							database.ref('subjects/' + subject.key + '/lectureNotes').push({
-								filePath: metadata.fullPath,
-								fileName: metadata.name
+								filePath: path,
+								fileName: file.name
 							});
 						}
 					});
