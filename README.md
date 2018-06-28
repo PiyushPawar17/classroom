@@ -34,3 +34,37 @@ npm start
 ------------------------------------------------------------------
 
 To prevent the browser from opening set `BROWSER=none` in the `.env` file.
+
+## Screenshots
+
+Sign-In / Sign-Up Page
+
+![Main Page](./screenshots/Screenshot-1.JPG)
+
+Subscribed Subjects
+
+![Subscribed Subjects](./screenshots/Screenshot-2.JPG)
+
+Lecture Notes and References (Teacher's View)
+
+![Lecture Notes and References](./screenshots/Screenshot-3.JPG)
+
+Announcements Page (Student's View)
+
+![Announcements Page](./screenshots/Screenshot-4.JPG)
+
+Subject's Home Page (Student's View)
+
+![Subject's Home Page](./screenshots/Screenshot-5.JPG)
+
+Assignment Page (Student's View)
+
+![Assignment Page](./screenshots/Screenshot-6.JPG)
+
+Discussion Forum
+
+![Discussion](./screenshots/Screenshot-7.JPG)
+
+Assignment Page (Teacher's View)
+
+![Assigment](./screenshots/Screenshot-8.JPG)
